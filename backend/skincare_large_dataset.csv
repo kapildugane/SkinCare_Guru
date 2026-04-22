@@ -1,0 +1,301 @@
+routine_type,focus_area,skin_type,age_range,experience_level,recommended_routine,product_recommendations
+Morning Care,Body Care,Sensitive,under 18,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Face Care,Oily,under 18,Advanced,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,under 18,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Face Care,Mature,25-34,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Face Care,Dry,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Hair Care,Normal,under 18,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Hair Care,Sensitive,35-44,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Hair Care,Sensitive,18-24,Advanced,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Face Care,Normal,55+,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Hair Care,Mature,under 18,Intermediate,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Body Care,Dry,under 18,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Body Care,Sensitive,25-34,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Evening Care,Face Care,Combination,55+,Expert,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Body Care,Dry,35-44,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Evening Care,Body Care,Combination,under 18,Expert,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,under 18,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Hair Care,Combination,45-54,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Hair Care,Combination,35-44,Expert,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Morning Care,Hair Care,Normal,under 18,Beginner,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Body Care,Dry,18-24,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Hair Care,Sensitive,18-24,Expert,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Body Care,Oily,18-24,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Weekly Reset,Face Care,Dry,55+,Advanced,Exfoliation → Mask → Hydration,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Morning Care,Face Care,Dry,45-54,Beginner,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Evening Care,Body Care,Mature,35-44,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Face Care,Dry,35-44,Expert,Exfoliation → Mask → Hydration,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Face Care,Oily,35-44,Beginner,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Weekly Reset,Hair Care,Dry,25-34,Expert,Exfoliation → Mask → Hydration,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Face Care,Dry,35-44,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Hair Care,Sensitive,under 18,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Face Care,Oily,under 18,Expert,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Face Care,Dry,55+,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Body Care,Dry,25-34,Advanced,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Complete Routine,Hair Care,Sensitive,18-24,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Morning Care,Body Care,Sensitive,45-54,Advanced,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | Minimalist Sunscreen
+Evening Care,Body Care,Sensitive,35-44,Expert,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Body Care,Oily,55+,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Evening Care,Hair Care,Dry,45-54,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Face Care,Sensitive,55+,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,25-34,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Hair Care,Oily,25-34,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Face Care,Oily,under 18,Intermediate,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Body Care,Oily,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Weekly Reset,Face Care,Normal,55+,Advanced,Exfoliation → Mask → Hydration,Minimalist Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Weekly Reset,Body Care,Mature,35-44,Advanced,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Body Care,Normal,45-54,Intermediate,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Complete Routine,Hair Care,Dry,18-24,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Body Care,Combination,25-34,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Body Care,Mature,45-54,Intermediate,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Body Care,Dry,35-44,Advanced,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,55+,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Body Care,Dry,18-24,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Face Care,Mature,45-54,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,18-24,Advanced,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Evening Care,Face Care,Oily,under 18,Expert,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Hair Care,Combination,25-34,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Morning Care,Hair Care,Normal,55+,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Travel Essential,Hair Care,Combination,55+,Beginner,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Body Care,Normal,55+,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Face Care,Oily,45-54,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Body Care,Dry,45-54,Expert,Exfoliation → Mask → Hydration,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Travel Essential,Body Care,Normal,35-44,Expert,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Evening Care,Body Care,Sensitive,35-44,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Hair Care,Mature,18-24,Expert,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Hair Care,Combination,35-44,Intermediate,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Weekly Reset,Hair Care,Combination,55+,Advanced,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Hair Care,Dry,35-44,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Face Care,Normal,35-44,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Travel Essential,Face Care,Mature,45-54,Advanced,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Morning Care,Body Care,Combination,55+,Advanced,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Morning Care,Face Care,Mature,35-44,Expert,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Face Care,Normal,under 18,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Face Care,Mature,under 18,Advanced,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Morning Care,Face Care,Combination,45-54,Beginner,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Evening Care,Hair Care,Sensitive,55+,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Hair Care,Sensitive,35-44,Expert,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Body Care,Normal,55+,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Evening Care,Face Care,Mature,18-24,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Body Care,Sensitive,35-44,Expert,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Sensitive,25-34,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Complete Routine,Body Care,Sensitive,under 18,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Morning Care,Body Care,Mature,55+,Expert,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Body Care,Oily,35-44,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Body Care,Dry,35-44,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Face Care,Normal,45-54,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Morning Care,Hair Care,Dry,55+,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Hair Care,Mature,45-54,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Hair Care,Normal,18-24,Advanced,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Complete Routine,Face Care,Combination,45-54,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Body Care,Sensitive,55+,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Hair Care,Oily,45-54,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Face Care,Dry,under 18,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Normal,55+,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Evening Care,Hair Care,Oily,18-24,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Weekly Reset,Face Care,Sensitive,35-44,Expert,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Face Care,Mature,25-34,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Hair Care,Combination,18-24,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Face Care,Sensitive,45-54,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Body Care,Combination,18-24,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Face Care,Oily,45-54,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Complete Routine,Hair Care,Dry,under 18,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Body Care,Oily,45-54,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Complete Routine,Face Care,Dry,55+,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Morning Care,Body Care,Sensitive,35-44,Intermediate,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Body Care,Dry,45-54,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Hair Care,Dry,18-24,Intermediate,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Weekly Reset,Body Care,Oily,35-44,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Travel Essential,Face Care,Oily,45-54,Advanced,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Hair Care,Dry,45-54,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Hair Care,Mature,under 18,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Weekly Reset,Face Care,Oily,18-24,Beginner,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Morning Care,Hair Care,Sensitive,35-44,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Evening Care,Face Care,Sensitive,55+,Advanced,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Hair Care,Mature,under 18,Beginner,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Body Care,Mature,55+,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Evening Care,Face Care,Dry,25-34,Expert,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Complete Routine,Hair Care,Combination,55+,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Sensitive,25-34,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Body Care,Normal,55+,Expert,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Evening Care,Body Care,Sensitive,25-34,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Complete Routine,Hair Care,Dry,55+,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Face Care,Mature,55+,Expert,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Complete Routine,Body Care,Sensitive,35-44,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Face Care,Oily,25-34,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Hair Care,Combination,45-54,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Complete Routine,Body Care,Sensitive,18-24,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Complete Routine,Face Care,Dry,18-24,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Travel Essential,Hair Care,Dry,under 18,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Hair Care,Normal,25-34,Expert,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Hair Care,Combination,35-44,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Body Care,Sensitive,55+,Advanced,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Hair Care,Combination,under 18,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Morning Care,Hair Care,Sensitive,45-54,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Body Care,Combination,45-54,Advanced,Exfoliation → Mask → Hydration,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Face Care,Normal,55+,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Hair Care,Normal,55+,Expert,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Complete Routine,Body Care,Dry,25-34,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Body Care,Mature,35-44,Expert,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Face Care,Combination,55+,Intermediate,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Travel Essential,Body Care,Dry,under 18,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Normal,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Hair Care,Combination,18-24,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Face Care,Sensitive,25-34,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Face Care,Sensitive,55+,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Weekly Reset,Hair Care,Oily,45-54,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Hair Care,Oily,18-24,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Face Care,Combination,18-24,Expert,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Weekly Reset,Face Care,Sensitive,35-44,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Hair Care,Combination,45-54,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Hair Care,Mature,45-54,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Body Care,Dry,under 18,Advanced,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Body Care,Dry,35-44,Expert,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Face Care,Mature,55+,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Hair Care,Normal,18-24,Beginner,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Body Care,Sensitive,45-54,Beginner,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Hair Care,Oily,under 18,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Hair Care,Normal,25-34,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Face Care,Combination,18-24,Intermediate,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Body Care,Combination,25-34,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Hair Care,Normal,55+,Beginner,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Hair Care,Normal,under 18,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Hair Care,Dry,35-44,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Weekly Reset,Body Care,Normal,25-34,Advanced,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Evening Care,Hair Care,Sensitive,25-34,Intermediate,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Body Care,Combination,25-34,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Body Care,Dry,under 18,Expert,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Face Care,Sensitive,18-24,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Weekly Reset,Hair Care,Mature,18-24,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Weekly Reset,Body Care,Sensitive,45-54,Beginner,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Hair Care,Dry,18-24,Expert,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Morning Care,Body Care,Oily,55+,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Evening Care,Body Care,Mature,18-24,Intermediate,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Mature,18-24,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Weekly Reset,Face Care,Oily,25-34,Beginner,Exfoliation → Mask → Hydration,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Morning Care,Face Care,Oily,55+,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Combination,25-34,Beginner,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Complete Routine,Face Care,Combination,under 18,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Body Care,Combination,55+,Advanced,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Face Care,Combination,18-24,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Weekly Reset,Face Care,Sensitive,18-24,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Hair Care,Combination,35-44,Intermediate,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Face Care,Normal,55+,Beginner,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Face Care,Normal,18-24,Expert,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Hair Care,Normal,55+,Expert,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Body Care,Oily,55+,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Face Care,Sensitive,35-44,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Face Care,Dry,45-54,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Face Care,Normal,45-54,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Complete Routine,Hair Care,Normal,55+,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Body Care,Dry,45-54,Expert,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Body Care,Combination,45-54,Intermediate,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Evening Care,Body Care,Dry,under 18,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Morning Care,Hair Care,Combination,35-44,Advanced,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Hair Care,Sensitive,under 18,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Travel Essential,Body Care,Mature,under 18,Beginner,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Hair Care,Sensitive,35-44,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Weekly Reset,Face Care,Mature,35-44,Advanced,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Body Care,Sensitive,under 18,Intermediate,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Travel Essential,Body Care,Oily,45-54,Advanced,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Hair Care,Oily,45-54,Advanced,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Travel Essential,Body Care,Combination,18-24,Advanced,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Face Care,Oily,55+,Intermediate,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Body Care,Combination,45-54,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Evening Care,Hair Care,Combination,45-54,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Face Care,Normal,18-24,Advanced,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Body Care,Sensitive,45-54,Advanced,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Weekly Reset,Body Care,Combination,18-24,Advanced,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Hair Care,Dry,55+,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Complete Routine,Hair Care,Dry,55+,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Evening Care,Face Care,Oily,18-24,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Complete Routine,Body Care,Oily,under 18,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Travel Essential,Body Care,Dry,55+,Advanced,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Body Care,Sensitive,35-44,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Face Care,Oily,55+,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Morning Care,Hair Care,Normal,45-54,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Face Care,Oily,35-44,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Hair Care,Mature,18-24,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Face Care,Dry,35-44,Beginner,Exfoliation → Mask → Hydration,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Face Care,Combination,45-54,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Travel Essential,Face Care,Oily,under 18,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Hair Care,Dry,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Face Care,Mature,55+,Expert,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Body Care,Normal,25-34,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Travel Essential,Face Care,Dry,under 18,Beginner,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Complete Routine,Face Care,Sensitive,18-24,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Evening Care,Hair Care,Sensitive,35-44,Expert,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Evening Care,Face Care,Mature,18-24,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Hair Care,Sensitive,45-54,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Face Care,Mature,under 18,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Body Care,Mature,45-54,Beginner,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Body Care,Dry,45-54,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Evening Care,Face Care,Normal,45-54,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Hair Care,Normal,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Complete Routine,Body Care,Mature,25-34,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Face Care,Sensitive,35-44,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Morning Care,Face Care,Oily,35-44,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Nivea Cream | La Roche SPF
+Evening Care,Hair Care,Normal,45-54,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Body Care,Mature,45-54,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Weekly Reset,Hair Care,Dry,55+,Beginner,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Hair Care,Combination,18-24,Advanced,Exfoliation → Mask → Hydration,CeraVe Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Weekly Reset,Hair Care,Oily,35-44,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Complete Routine,Face Care,Combination,25-34,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Weekly Reset,Hair Care,Oily,35-44,Beginner,Exfoliation → Mask → Hydration,CeraVe Cleanser | Retinol Serum | Nivea Cream | Minimalist Sunscreen
+Morning Care,Body Care,Mature,45-54,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Travel Essential,Hair Care,Combination,25-34,Intermediate,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Body Care,Sensitive,under 18,Advanced,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Hair Care,Sensitive,under 18,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Evening Care,Body Care,Dry,18-24,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Nivea Cream | La Roche SPF
+Complete Routine,Hair Care,Normal,18-24,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Hair Care,Normal,25-34,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Complete Routine,Hair Care,Dry,18-24,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Hair Care,Dry,45-54,Expert,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Face Care,Dry,under 18,Beginner,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Weekly Reset,Body Care,Normal,18-24,Beginner,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Complete Routine,Face Care,Combination,25-34,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Normal,under 18,Intermediate,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Travel Essential,Body Care,Mature,55+,Beginner,Mini Cleanser → Moisturizer → SPF,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Evening Care,Hair Care,Normal,under 18,Intermediate,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Morning Care,Body Care,Sensitive,under 18,Beginner,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Morning Care,Body Care,Sensitive,35-44,Beginner,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Hair Care,Combination,35-44,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Face Care,Combination,18-24,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Evening Care,Body Care,Combination,35-44,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Body Care,Sensitive,55+,Expert,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Hair Care,Oily,55+,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Travel Essential,Face Care,Sensitive,45-54,Advanced,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Complete Routine,Body Care,Normal,55+,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Hair Care,Mature,under 18,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Body Care,Mature,35-44,Expert,Exfoliation → Mask → Hydration,Minimalist Cleanser | Retinol Serum | Neutrogena Hydro Boost | Neutrogena SPF 50
+Evening Care,Hair Care,Sensitive,under 18,Intermediate,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Face Care,Mature,45-54,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Evening Care,Body Care,Sensitive,under 18,Advanced,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Hair Care,Combination,45-54,Beginner,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Morning Care,Hair Care,Sensitive,25-34,Intermediate,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Complete Routine,Body Care,Combination,35-44,Expert,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Evening Care,Face Care,Normal,25-34,Advanced,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Retinol Serum | Neutrogena Hydro Boost | La Roche SPF
+Travel Essential,Face Care,Dry,35-44,Advanced,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Retinol Serum | Nivea Cream | Neutrogena SPF 50
+Evening Care,Face Care,Normal,25-34,Beginner,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Minimalist Sunscreen
+Complete Routine,Body Care,Normal,25-34,Advanced,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | La Roche SPF
+Weekly Reset,Face Care,Combination,under 18,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Weekly Reset,Body Care,Combination,55+,Beginner,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Morning Care,Hair Care,Normal,18-24,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Morning Care,Face Care,Sensitive,under 18,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Morning Care,Body Care,Mature,55+,Beginner,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Neutrogena SPF 50
+Weekly Reset,Body Care,Combination,35-44,Intermediate,Exfoliation → Mask → Hydration,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Complete Routine,Hair Care,Mature,under 18,Intermediate,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | Neutrogena SPF 50
+Weekly Reset,Hair Care,Sensitive,18-24,Expert,Exfoliation → Mask → Hydration,CeraVe Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Travel Essential,Face Care,Dry,55+,Expert,Mini Cleanser → Moisturizer → SPF,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | Neutrogena SPF 50
+Weekly Reset,Face Care,Dry,35-44,Intermediate,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Niacinamide Serum | Olay Moisturizer | Neutrogena SPF 50
+Complete Routine,Hair Care,Oily,35-44,Beginner,AM: Cleanser → Moisturizer → SPF | PM: Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Niacinamide Serum | Nivea Cream | La Roche SPF
+Evening Care,Face Care,Oily,under 18,Advanced,Cleanser → Treatment → Moisturizer,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | La Roche SPF
+Evening Care,Face Care,Combination,35-44,Intermediate,Cleanser → Treatment → Moisturizer,CeraVe Cleanser | Niacinamide Serum | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Body Care,Combination,55+,Advanced,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Salicylic Acid | Olay Moisturizer | Minimalist Sunscreen
+Morning Care,Hair Care,Combination,18-24,Advanced,Cleanser → Moisturizer → Sunscreen,Cetaphil Cleanser | Salicylic Acid | Neutrogena Hydro Boost | La Roche SPF
+Morning Care,Face Care,Sensitive,55+,Beginner,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Minimalist Sunscreen
+Morning Care,Face Care,Oily,35-44,Beginner,Cleanser → Moisturizer → Sunscreen,CeraVe Cleanser | Salicylic Acid | Nivea Cream | Neutrogena SPF 50
+Travel Essential,Hair Care,Normal,35-44,Intermediate,Mini Cleanser → Moisturizer → SPF,Minimalist Cleanser | Salicylic Acid | Nivea Cream | Minimalist Sunscreen
+Morning Care,Body Care,Mature,under 18,Expert,Cleanser → Moisturizer → Sunscreen,Minimalist Cleanser | Niacinamide Serum | Olay Moisturizer | La Roche SPF
+Weekly Reset,Body Care,Combination,35-44,Expert,Exfoliation → Mask → Hydration,Cetaphil Cleanser | Retinol Serum | Olay Moisturizer | Minimalist Sunscreen
+Evening Care,Body Care,Oily,35-44,Intermediate,Cleanser → Treatment → Moisturizer,Cetaphil Cleanser | Niacinamide Serum | Neutrogena Hydro Boost | Neutrogena SPF 50

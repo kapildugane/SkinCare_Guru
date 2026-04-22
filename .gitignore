@@ -1,0 +1,16 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/.env
+*.pyc
+.DS_Store
+
+# Databases
+# We include skincare.db because it contains your product catalog 
+# But we ignore temporary journals
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Local scripts
+*.bat

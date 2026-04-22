@@ -1,0 +1,31 @@
+# PROJECT: Skincare Guru (AI-Powered Beauty Consultant)
+
+## 🎯 Product Vision
+Skincare Guru is an AI-powered skincare assistant designed for cosmetic brands to guide users via conversational UI,
+build personalized skincare routines, and recommend products to increase engagement and conversions.
+
+## 🌐 1. LANDING PAGE
+- **UI Description:** Clean beauty-focused design (white, beige, pastel tones).
+- **Center Content:** Heading: “Your AI Skincare Expert”, CTA buttons, Chatbot bubble (bottom-right).
+- **Chatbot Entry:** Floating circular icon, expands into full chat window with smooth animation.
+
+## 🤖 2. CHATBOT EXPERIENCE
+- **Type:** Hybrid AI Chatbot (Guided decision tree + LLM-based conversational AI).
+
+## 🔄 3. COMPLETE CHAT FLOW
+1. **Intent Selection:** Build My Routine, Help Me Fix a Concern, Create My Custom Kit.
+2. **Routine Type:** Morning, Evening, Complete, Weekly Reset, Travel Essentials.
+3. **Focus Area:** Face Care, Body Care, Hair Care.
+4. **Skin Type:** Normal, Dry, Oily, Combination, Sensitive, Mature.
+5. **Age Range:** Under 18 to 55+.
+6. **Experience Level:** Beginner, Intermediate, Advanced, Expert.
+
+## ⚙️ 4. AI & SYSTEM ARCHITECTURE
+- **Logic:** Input JSON -> Validation -> RAG Retrieval -> LLM (Mistral/Llama) -> Rule Engine -> Final JSON Output.
+- **Tech Stack:** Frontend (React), Backend (FastAPI), Vector DB (FAISS).
+
+## 🎨 5. UI/UX REQUIREMENTS
+- Mobile-first, soft colors, minimal design, fast response (<2 sec). - Features: Typing animation, chat history, quick
+    reply buttons, restart flow. ## 🚀 6. ROADMAP - **Phase 1:** Chatbot flow (6 steps), product recommendation, basic
+    RAG. - **Phase 2:** LLM integration, chat memory, better UI. - **Phase 3:** User accounts, image analysis,
+    e-commerce integration.

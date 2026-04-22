@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkinCare Guru Expert — AI Powered Beauty Consultant</title>
+    <meta name="description" content="Meet SkinCare Guru Expert — your personal AI-powered beauty consultant. Get curated skincare routines and personalized product picks based on your unique skin profile.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <main class="hero">
+
+        <!-- Subtle overlay for readability -->
+        <div class="hero-overlay"></div>
+
+        <!-- Floating badge -->
+        <div class="hero-badge animate-fade-in-down">
+            <i class="fa-solid fa-star"></i> AI-Powered &nbsp;·&nbsp; Dermatologist-Grade
+        </div>
+
+        <!-- Main content card -->
+        <div class="hero-card animate-fade-in-up">
+            <p class="hero-eyebrow">Your Personal Beauty Consultant</p>
+            <h1 class="hero-title">SkinCare<br><em>Guru Expert</em></h1>
+            <p class="hero-subtitle">
+                Unlock your skin's full potential. Our AI analyses your unique profile and crafts a 
+                bespoke routine — curated with precision, delivered in seconds.
+            </p>
+
+            <div class="hero-actions">
+                <button class="btn-primary" id="start-btn" onclick="openChat()">
+                    <span>Begin Your Consultation</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn-secondary">
+                    <i class="fa-regular fa-circle-play"></i>
+                    <span>How it works</span>
+                </button>
+            </div>
+
+            <!-- Trust indicators -->
+            <div class="hero-trust">
+                <div class="trust-item">
+                    <strong>10,000+</strong>
+                    <span>Routines Created</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <strong>98%</strong>
+                    <span>Satisfaction Rate</span>
+                </div>
+                <div class="trust-divider"></div>
+                <div class="trust-item">
+                    <strong>6 Steps</strong>
+                    <span>To Perfect Skin</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Chatbot Orb -->
+    <div id="chatbot-orb" class="chatbot-orb" onclick="openChat()" title="Start your skincare consultation">
+        <i class="fa-solid fa-sparkles"></i>
+        <span class="orb-label">Ask Guru</span>
+    </div>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="chat-window hidden">
+
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <button id="back-btn" class="header-nav-btn hidden" onclick="goBack()" title="Go Back">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="header-center">
+                <h3 id="chat-header-title">SkinCare Guru</h3>
+            </div>
+            <div class="header-right">
+                <button class="header-nav-btn" onclick="restartChat()" title="Start Over">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+                <button class="header-nav-btn" onclick="closeChat()" aria-label="Close chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-track">
+            <div id="step-bar" class="progress-fill"></div>
+        </div>
+        <div id="step-label" class="step-label"></div>
+
+        <!-- Wizard Screen (single page at a time) -->
+        <div id="chat-screen" class="chat-screen">
+            <div id="typing-indicator" class="typing-indicator hidden">
+                <span></span><span></span><span></span>
+            </div>
+            <div id="chat-question" class="chat-question"></div>
+            <div id="options-container" class="options-container"></div>
+        </div>
+
+        <!-- Options Footer -->
+        <div class="chat-footer">
+            <div class="footer-center">
+                <div class="footer-attribution">
+                    Powered by GuruAi Labs
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

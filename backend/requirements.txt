@@ -1,0 +1,12 @@
+fastapi==0.104.1
+uvicorn==0.23.2
+pydantic==2.5.2
+requests==2.31.0
+sqlalchemy==2.0.23
+numpy
+pandas
+python-dotenv
+faiss-cpu
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
