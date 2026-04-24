@@ -7,6 +7,7 @@ const stepBar = document.getElementById('step-bar');
 const stepLabel = document.getElementById('step-label');
 const chatbotOrb = document.getElementById('chatbot-orb');
 const API_BASE_URLS = [
+    '', // Use relative path for unified deployment on Render
     'http://127.0.0.1:8001',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:10000'

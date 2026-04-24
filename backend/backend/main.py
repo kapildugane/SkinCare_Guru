@@ -1,5 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import uvicorn
 import requests
 import os
@@ -1352,6 +1354,17 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
     except Exception as e:
         print(f"Chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail="The chatbot hit an internal error while building your result.")
+
+
+# ---------------- FRONTEND STATIC FILES ---------------- #
+frontend_path = os.path.join(BASE_DIR, "..", "frontend")
+
+@app.get("/")
+async def serve_index():
+    return FileResponse(os.path.join(frontend_path, "index.html"))
+
+# Mount the rest of the frontend files (app.js, style.css, images, etc.)
+app.mount("/", StaticFiles(directory=frontend_path), name="frontend")
 
 
 if __name__ == "__main__":
