@@ -1359,6 +1359,10 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
 # ---------------- FRONTEND STATIC FILES ---------------- #
 frontend_path = os.path.join(BASE_DIR, "..", "frontend")
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.get("/")
 async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
