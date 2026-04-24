@@ -102,9 +102,9 @@ body {
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-radius: 28px;
-    padding: 4rem 4.5rem;
-    max-width: 680px;
-    width: 90%;
+    padding: clamp(2.4rem, 4vw, 4rem) clamp(1.8rem, 4.8vw, 4.5rem);
+    max-width: clamp(640px, 52vw, 860px);
+    width: min(92vw, 860px);
     box-shadow:
         0 8px 32px var(--shadow-warm),
         0 1px 0 rgba(255, 255, 255, 0.8) inset;
@@ -250,8 +250,8 @@ body {
 
 .chatbot-orb {
     position: fixed;
-    bottom: 32px;
-    right: 32px;
+    bottom: clamp(18px, 2.6vw, 32px);
+    right: clamp(18px, 2.6vw, 32px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -298,10 +298,10 @@ body {
 
 .chat-window {
     position: fixed;
-    bottom: 32px;
-    right: 32px;
-    width: 350px;
-    height: 720px;
+    bottom: clamp(18px, 2.6vw, 32px);
+    right: clamp(18px, 2.6vw, 32px);
+    width: clamp(340px, 30vw, 460px);
+    height: clamp(620px, 82vh, 860px);
     max-height: 90vh;
     background: var(--cream);
     border: 1px solid var(--glass-border);
@@ -327,9 +327,9 @@ body {
 }
 
 .chat-window.full-screen-results .chat-screen {
-    max-width: 900px;
+    max-width: min(980px, 92vw);
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: clamp(1.4rem, 3vw, 3rem) clamp(1rem, 2.8vw, 2rem);
 }
 
 .chat-window.hidden {
@@ -430,7 +430,7 @@ body {
 
 .chat-screen {
     flex: 1;
-    padding: 1.25rem 1.6rem 0.6rem;
+    padding: clamp(1rem, 1.6vw, 1.25rem) clamp(1rem, 1.9vw, 1.6rem) 0.6rem;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -846,6 +846,7 @@ body {
 
     .chat-window {
         width: calc(100vw - 2rem);
+        height: min(82vh, 760px);
         right: 1rem;
         bottom: 90px;
     }
@@ -853,6 +854,31 @@ body {
     .chatbot-orb {
         right: 1.2rem;
         bottom: 1.2rem;
+    }
+}
+
+@media (max-height: 760px) {
+    .chat-window {
+        height: 88vh;
+        max-height: 88vh;
+    }
+}
+
+@media (min-width: 1280px) {
+    .hero-card {
+        width: min(88vw, 900px);
+    }
+
+    .chat-window {
+        width: clamp(360px, 26vw, 470px);
+        height: clamp(660px, 84vh, 900px);
+    }
+}
+
+@media (min-width: 1700px) {
+    .chat-window {
+        width: 470px;
+        height: min(86vh, 920px);
     }
 }
 
