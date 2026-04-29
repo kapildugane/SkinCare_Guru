@@ -14,7 +14,9 @@ const API_BASE_URLS = [
 ];
 
 let currentStep = 0;
-let userData = {};
+let userData = {
+    session_id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)
+};
 let stepHistory = [];
 let concernFlowState = null;
 const TOTAL_STEPS = 6;
@@ -724,7 +726,9 @@ function selectOption(optionText, dataKey, nextStep) {
 
 function restartChat() {
     chatWindow.classList.remove('full-screen-results');
-    userData = {};
+    userData = {
+        session_id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)
+    };
     currentStep = 0;
     stepHistory = [];
     concernFlowState = null;

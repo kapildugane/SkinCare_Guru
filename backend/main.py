@@ -9,7 +9,8 @@ import json
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from database.db import engine, get_db, Base
-from database.models import Product
+from sqlalchemy import func
+from database.models import Product, ChatSession, Consultation
 from rag_engine import retrieve_top_k
 from dotenv import load_dotenv
 
@@ -1236,6 +1237,23 @@ def generate_routine(user_data, db):
                 "image": p.image
             })
 
+    session_id = user_data.get("session_id")
+    if session_id:
+        try:
+            consultation = Consultation(
+                session_id=session_id,
+                entry_card=user_data.get("intent", "Unknown"),
+                skin_type=user_profile.get("skin_type", ""),
+                concerns=", ".join(user_profile.get("concern", [])),
+                routine_length=len(product_list),
+                products_recommended=len(product_list)
+            )
+            db.add(consultation)
+            db.commit()
+        except Exception as e:
+            print(f"Error saving consultation: {e}")
+            db.rollback()
+
     return {
         "type": "input",
         "message": final_message,
@@ -1324,6 +1342,17 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
         step = req.step
         user_data = req.data
 
+        session_id = user_data.get("session_id")
+        if session_id:
+            session = db.query(ChatSession).filter(ChatSession.session_id == session_id).first()
+            if not session:
+                session = ChatSession(session_id=session_id)
+                db.add(session)
+                db.commit()
+            else:
+                session.last_active = func.now()
+                db.commit()
+
         if step == 0:
             return {
                 "message": "Hi! What can I help you with?",
@@ -1355,6 +1384,33 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
         print(f"Chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail="The chatbot hit an internal error while building your result.")
 
+
+# ---------------- DASHBOARD API ---------------- #
+
+@app.get("/api/admin/dashboard")
+async def admin_dashboard(db: Session = Depends(get_db)):
+    total_users = db.query(ChatSession).count()
+    completed_consultations = db.query(Consultation).count()
+    
+    avg_routine_length = db.query(func.avg(Consultation.routine_length)).scalar() or 0.0
+    total_products_recommended = db.query(func.sum(Consultation.products_recommended)).scalar() or 0
+    
+    # Entry Card Distribution
+    entry_cards = db.query(Consultation.entry_card, func.count(Consultation.id)).group_by(Consultation.entry_card).all()
+    entry_card_dist = [{"name": card, "value": count} for card, count in entry_cards]
+    
+    # Sessions over time
+    sessions = db.query(func.date(ChatSession.created_at).label('date'), func.count(ChatSession.id)).group_by('date').order_by('date').all()
+    sessions_over_time = [{"date": str(date_val), "count": count} for date_val, count in sessions]
+    
+    return {
+        "total_users": total_users,
+        "completed_consultations": completed_consultations,
+        "avg_routine_length": round(avg_routine_length, 1),
+        "products_recommended": int(total_products_recommended),
+        "entry_card_dist": entry_card_dist,
+        "sessions_over_time": sessions_over_time
+    }
 
 # ---------------- FRONTEND STATIC FILES ---------------- #
 frontend_path = os.path.join(BASE_DIR, "..", "frontend")
