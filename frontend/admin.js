@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     // Supabase-like chart styling defaults
-    Chart.defaults.color = '#a0a0a0';
+    Chart.defaults.color = '#717171';
     Chart.defaults.font.family = "'Inter', sans-serif";
     
     try {
@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = await response.json();
 
         // Update KPIs
-        document.getElementById('kpi-users').textContent = data.total_users;
-        document.getElementById('kpi-consultations').textContent = data.completed_consultations;
+        document.getElementById('kpi-users').textContent = data.total_users.toLocaleString();
+        document.getElementById('kpi-consultations').textContent = data.completed_consultations.toLocaleString();
         document.getElementById('kpi-routine-length').textContent = data.avg_routine_length;
-        document.getElementById('kpi-products').textContent = data.products_recommended;
+        document.getElementById('kpi-products').textContent = data.products_recommended.toLocaleString();
 
         // Render Line Chart (Sessions Over Time)
         const lineCtx = document.getElementById('sessionsChart').getContext('2d');
@@ -26,13 +26,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 datasets: [{
                     label: 'Chatbot Sessions',
                     data: counts,
-                    borderColor: '#24b47e', // Supabase green
-                    backgroundColor: 'rgba(36, 180, 126, 0.1)',
+                    borderColor: '#e78b60', // Peach accent
+                    backgroundColor: 'rgba(231, 139, 96, 0.1)',
                     borderWidth: 2,
-                    pointBackgroundColor: '#24b47e',
+                    pointBackgroundColor: '#e78b60',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#24b47e',
+                    pointHoverBorderColor: '#e78b60',
                     fill: true,
                     tension: 0.4
                 }]
@@ -43,13 +43,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: '#242424',
-                        titleColor: '#ededed',
-                        bodyColor: '#a0a0a0',
-                        borderColor: '#333333',
+                        backgroundColor: '#ffffff',
+                        titleColor: '#1a1a1a',
+                        bodyColor: '#717171',
+                        borderColor: '#f0f0f0',
                         borderWidth: 1,
                         padding: 10,
-                        displayColors: false
+                        displayColors: false,
+                        titleFont: { family: "'Inter', sans-serif", weight: '600' },
+                        bodyFont: { family: "'Inter', sans-serif" }
                     }
                 },
                 scales: {
@@ -58,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     },
                     y: {
                         beginAtZero: true,
-                        grid: { color: '#333333', drawBorder: false },
+                        grid: { color: '#f0f0f0', drawBorder: false, borderDash: [5, 5] },
                         ticks: { stepSize: 1 }
                     }
                 }
@@ -77,10 +79,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 datasets: [{
                     data: pieData,
                     backgroundColor: [
-                        '#24b47e', // Green
-                        '#3ecf8e', // Light Green
-                        '#1f8a62', // Dark Green
-                        '#104d37'  // Darker Green
+                        '#e78b60', // Peach
+                        '#edaa8b', // Lighter Peach
+                        '#f3cbb6', // Even Lighter
+                        '#f9ede4'  // Very Light
                     ],
                     borderWidth: 0,
                     hoverOffset: 4
@@ -95,16 +97,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         position: 'bottom',
                         labels: {
                             usePointStyle: true,
-                            padding: 20
+                            padding: 20,
+                            font: { family: "'Inter', sans-serif" }
                         }
                     },
                     tooltip: {
-                        backgroundColor: '#242424',
-                        titleColor: '#ededed',
-                        bodyColor: '#a0a0a0',
-                        borderColor: '#333333',
+                        backgroundColor: '#ffffff',
+                        titleColor: '#1a1a1a',
+                        bodyColor: '#717171',
+                        borderColor: '#f0f0f0',
                         borderWidth: 1,
-                        padding: 10
+                        padding: 10,
+                        titleFont: { family: "'Inter', sans-serif", weight: '600' },
+                        bodyFont: { family: "'Inter', sans-serif" }
                     }
                 }
             }

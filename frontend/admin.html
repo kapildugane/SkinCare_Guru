@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skincare Guru - Admin Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -13,17 +15,42 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <i class="fa-solid fa-sparkles logo-icon"></i>
-                <h2>Guru Admin</h2>
+                <div class="logo-icon-bg">
+                    <i class="fa-solid fa-sparkles logo-icon"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>SkinCare Guru</h2>
+                    <p>Analytics Dashboard</p>
+                </div>
             </div>
             <nav class="sidebar-nav">
                 <a href="#" class="nav-item active">
-                    <i class="fa-solid fa-chart-line"></i>
+                    <i class="fa-solid fa-border-all"></i>
                     <span>Overview</span>
                 </a>
-                <a href="/" class="nav-item">
-                    <i class="fa-solid fa-robot"></i>
-                    <span>Open Chatbot</span>
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-message"></i>
+                    <span>Chatbot Usage</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Skin & Concern Insights</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Product Performance</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>AI Insights</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Products</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
                 </a>
             </nav>
         </aside>
@@ -31,42 +58,70 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="topbar">
-                <h1>Project Overview</h1>
-                <div class="user-profile">
-                    <span>Admin</span>
-                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                <div class="topbar-left">
+                    <i class="fa-solid fa-table-columns"></i>
+                </div>
+                <div class="topbar-right">
+                    <div class="date-picker">
+                        <span>Last 30 Days</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <button class="icon-btn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="btn-primary">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Add User
+                    </button>
+                    <div class="user-avatar">SJ</div>
                 </div>
             </header>
 
             <div class="content-wrapper">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Overview</h1>
+                        <p>Your chatbot performance at a glance</p>
+                    </div>
+                    <button class="btn-secondary">
+                        <i class="fa-solid fa-download"></i>
+                        Download
+                    </button>
+                </div>
+
                 <!-- KPI Cards -->
                 <div class="kpi-grid">
                     <div class="kpi-card">
-                        <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-icon icon-peach"><i class="fa-solid fa-user-group"></i></div>
                         <div class="kpi-info">
                             <h3>Total Chatbot Users</h3>
-                            <p id="kpi-users">0</p>
+                            <p id="kpi-users" class="kpi-value">0</p>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +12% vs last period</span>
                         </div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <div class="kpi-icon icon-green"><i class="fa-regular fa-circle-check"></i></div>
                         <div class="kpi-info">
                             <h3>Completed Consultations</h3>
-                            <p id="kpi-consultations">0</p>
+                            <p id="kpi-consultations" class="kpi-value">0</p>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +8% vs last period</span>
                         </div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon"><i class="fa-solid fa-list-ol"></i></div>
+                        <div class="kpi-icon icon-purple"><i class="fa-regular fa-clock"></i></div>
                         <div class="kpi-info">
                             <h3>Avg Routine Length</h3>
-                            <p id="kpi-routine-length">0.0</p>
+                            <p class="kpi-value"><span id="kpi-routine-length">0.0</span> steps</p>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +0.3 vs last period</span>
                         </div>
                     </div>
                     <div class="kpi-card">
-                        <div class="kpi-icon"><i class="fa-solid fa-box-open"></i></div>
+                        <div class="kpi-icon icon-gold"><i class="fa-solid fa-cube"></i></div>
                         <div class="kpi-info">
                             <h3>Products Recommended</h3>
-                            <p id="kpi-products">0</p>
+                            <p id="kpi-products" class="kpi-value">0</p>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +15% vs last period</span>
                         </div>
                     </div>
                 </div>
