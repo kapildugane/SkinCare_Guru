@@ -6,18 +6,26 @@ import uvicorn
 import requests
 import os
 import json
+import logging
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from database.db import engine, get_db, Base
+from database.db import engine, get_db, Base, validate_db_connection
 from sqlalchemy import func
 from database.models import Product, ChatSession, Consultation
 from rag_engine import retrieve_top_k
 from dotenv import load_dotenv
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger(__name__)
+
 BASE_DIR = os.path.dirname(__file__)
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 Base.metadata.create_all(bind=engine)
+validate_db_connection()
 
 app = FastAPI(title="Skincare Guru API")
 
@@ -29,7 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mistral removed as fallback
+
 
 
 class ChatRequest(BaseModel):
@@ -1155,7 +1163,18 @@ def build_local_routine(all_products, user_data):
 
 
 def generate_routine(user_data, db):
-    all_products = db.query(Product).all()
+    try:
+        all_products = db.query(Product).all()
+    except Exception as e:
+        logger.error(f"[DB] Failed to load products: {e}")
+        return {
+            "type": "input",
+            "message": "I'm having trouble reaching the product database right now. Please try again in a moment, or click 'Start Over' to restart your consultation.",
+            "products": [],
+            "placeholder": "Ask a question...",
+            "next_step": 999,
+            "data_key": "follow_up_chat"
+        }
     user_profile = build_user_profile(user_data)
     scored_products = score_and_filter_products(all_products, user_profile)
     shortlisted_products = scored_products[: max(8, choose_recommendation_count(user_profile) + 2)]
@@ -1164,7 +1183,7 @@ def generate_routine(user_data, db):
         top_matches = retrieve_top_k(user_data, k=1)
         best_routine_guide = top_matches[0]['record']['recommended_routine']
     except Exception as e:
-        print(f"RAG Error: {e}")
+        logger.warning(f"[RAG] Retrieval failed, using generic guide. Error: {e}")
         best_routine_guide = "Standard daily routine"
 
     request_payload = {
@@ -1342,16 +1361,21 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
         step = req.step
         user_data = req.data
 
+        # Session upsert is non-critical — isolate its errors from the main flow
         session_id = user_data.get("session_id")
         if session_id:
-            session = db.query(ChatSession).filter(ChatSession.session_id == session_id).first()
-            if not session:
-                session = ChatSession(session_id=session_id)
-                db.add(session)
-                db.commit()
-            else:
-                session.last_active = func.now()
-                db.commit()
+            try:
+                session = db.query(ChatSession).filter(ChatSession.session_id == session_id).first()
+                if not session:
+                    session = ChatSession(session_id=session_id)
+                    db.add(session)
+                    db.commit()
+                else:
+                    session.last_active = func.now()
+                    db.commit()
+            except Exception as sess_err:
+                logger.warning(f"[Session] Could not upsert session '{session_id}': {sess_err}")
+                db.rollback()
 
         if step == 0:
             return {
@@ -1389,28 +1413,41 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
 
 @app.get("/api/admin/dashboard")
 async def admin_dashboard(db: Session = Depends(get_db)):
-    total_users = db.query(ChatSession).count()
-    completed_consultations = db.query(Consultation).count()
-    
-    avg_routine_length = db.query(func.avg(Consultation.routine_length)).scalar() or 0.0
-    total_products_recommended = db.query(func.sum(Consultation.products_recommended)).scalar() or 0
-    
-    # Entry Card Distribution
-    entry_cards = db.query(Consultation.entry_card, func.count(Consultation.id)).group_by(Consultation.entry_card).all()
-    entry_card_dist = [{"name": card, "value": count} for card, count in entry_cards]
-    
-    # Sessions over time
-    sessions = db.query(func.date(ChatSession.created_at).label('date'), func.count(ChatSession.id)).group_by('date').order_by('date').all()
-    sessions_over_time = [{"date": str(date_val), "count": count} for date_val, count in sessions]
-    
-    return {
-        "total_users": total_users,
-        "completed_consultations": completed_consultations,
-        "avg_routine_length": round(avg_routine_length, 1),
-        "products_recommended": int(total_products_recommended),
-        "entry_card_dist": entry_card_dist,
-        "sessions_over_time": sessions_over_time
-    }
+    try:
+        total_users = db.query(ChatSession).count()
+        completed_consultations = db.query(Consultation).count()
+
+        avg_routine_length = db.query(func.avg(Consultation.routine_length)).scalar() or 0.0
+        total_products_recommended = db.query(func.sum(Consultation.products_recommended)).scalar() or 0
+
+        # Entry Card Distribution
+        entry_cards = db.query(Consultation.entry_card, func.count(Consultation.id)).group_by(Consultation.entry_card).all()
+        entry_card_dist = [{"name": card or "Unknown", "value": count} for card, count in entry_cards]
+
+        # Sessions over time
+        sessions = db.query(func.date(ChatSession.created_at).label('date'), func.count(ChatSession.id)).group_by('date').order_by('date').all()
+        sessions_over_time = [{"date": str(date_val), "count": count} for date_val, count in sessions]
+
+        return {
+            "total_users": total_users,
+            "completed_consultations": completed_consultations,
+            "avg_routine_length": round(avg_routine_length, 1),
+            "products_recommended": int(total_products_recommended),
+            "entry_card_dist": entry_card_dist,
+            "sessions_over_time": sessions_over_time
+        }
+    except Exception as e:
+        logger.error(f"[Dashboard] Failed to fetch analytics: {e}")
+        # Return zero-state so the frontend can still render cleanly
+        return {
+            "total_users": 0,
+            "completed_consultations": 0,
+            "avg_routine_length": 0.0,
+            "products_recommended": 0,
+            "entry_card_dist": [],
+            "sessions_over_time": [],
+            "_error": "Dashboard data temporarily unavailable. The database may be starting up."
+        }
 
 # ---------------- FRONTEND STATIC FILES ---------------- #
 frontend_path = os.path.join(BASE_DIR, "..", "frontend")

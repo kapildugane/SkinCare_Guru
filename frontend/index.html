@@ -3,123 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkinCare Guru Expert — AI Powered Beauty Consultant</title>
-    <meta name="description" content="Meet SkinCare Guru Expert — your personal AI-powered beauty consultant. Get curated skincare routines and personalized product picks based on your unique skin profile.">
+    <title>SkinCare Guru | Gateway</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #e78b60;
+            --primary-dark: #d67a50;
+            --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text-dark: #2d3436;
+            --text-muted: #636e72;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Abstract background shapes */
+        .shape {
+            position: absolute;
+            z-index: -1;
+            filter: blur(80px);
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(231, 139, 96, 0.2);
+            top: -100px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: rgba(214, 122, 80, 0.15);
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 60px 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .logo-wrapper i {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        p.tagline {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 45px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .gate-button {
+            text-decoration: none;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .gate-button:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .gate-button i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+
+        .gate-button h2 {
+            font-size: 24px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .gate-button p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .admin-btn {
+            background: #f8f9fa;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: var(--text-muted);
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 32px; }
+            .card { padding: 40px 20px; }
+        }
+    </style>
 </head>
 <body>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
 
-    <!-- Hero Section -->
-    <main class="hero">
-
-        <!-- Subtle overlay for readability -->
-        <div class="hero-overlay"></div>
-
-        <!-- Floating badge -->
-        <div class="hero-badge animate-fade-in-down">
-            <i class="fa-solid fa-star"></i> AI-Powered &nbsp;·&nbsp; Dermatologist-Grade
-        </div>
-
-        <!-- Main content card -->
-        <div class="hero-card animate-fade-in-up">
-            <p class="hero-eyebrow">Your Personal Beauty Consultant</p>
-            <h1 class="hero-title">SkinCare<br><em>Guru Expert</em></h1>
-            <p class="hero-subtitle">
-                Unlock your skin's full potential. Our AI analyses your unique profile and crafts a 
-                bespoke routine — curated with precision, delivered in seconds.
-            </p>
-
-            <div class="hero-actions">
-                <button class="btn-primary" id="start-btn" onclick="openChat()">
-                    <span>Begin Your Consultation</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="btn-secondary">
-                    <i class="fa-regular fa-circle-play"></i>
-                    <span>How it works</span>
-                </button>
+    <div class="container">
+        <div class="card">
+            <div class="logo-wrapper">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h1>SkinCare Guru</h1>
+                <p class="tagline">Personalized intelligence for your skin's unique journey.</p>
             </div>
 
-            <!-- Trust indicators -->
-            <div class="hero-trust">
-                <div class="trust-item">
-                    <strong>10,000+</strong>
-                    <span>Routines Created</span>
-                </div>
-                <div class="trust-divider"></div>
-                <div class="trust-item">
-                    <strong>98%</strong>
-                    <span>Satisfaction Rate</span>
-                </div>
-                <div class="trust-divider"></div>
-                <div class="trust-item">
-                    <strong>6 Steps</strong>
-                    <span>To Perfect Skin</span>
-                </div>
+            <div class="button-grid">
+                <a href="/client.html" class="gate-button">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <div>
+                        <h2>Client Portal</h2>
+                        <p>Start your AI consultation and get a custom routine.</p>
+                    </div>
+                </a>
+
+                <a href="/admin.html" class="gate-button admin-btn">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div>
+                        <h2>Admin Panel</h2>
+                        <p>View analytics, user trends, and performance insights.</p>
+                    </div>
+                </a>
             </div>
         </div>
-
-    </main>
-
-    <!-- Chatbot Orb -->
-    <div id="chatbot-orb" class="chatbot-orb" onclick="openChat()" title="Start your skincare consultation">
-        <i class="fa-solid fa-sparkles"></i>
-        <span class="orb-label">Ask Guru</span>
+        
+        <div class="footer">
+            &copy; 2026 SkinCare Guru. All rights reserved.
+        </div>
     </div>
-
-    <!-- Chat Window -->
-    <div id="chat-window" class="chat-window hidden">
-
-        <!-- Header -->
-        <div class="chat-header">
-            <div class="header-left">
-                <button id="back-btn" class="header-nav-btn hidden" onclick="goBack()" title="Go Back">
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-            </div>
-            <div class="header-center">
-                <h3 id="chat-header-title">SkinCare Guru</h3>
-            </div>
-            <div class="header-right">
-                <button class="header-nav-btn" onclick="restartChat()" title="Start Over">
-                    <i class="fa-solid fa-rotate-left"></i>
-                </button>
-                <button class="header-nav-btn" onclick="closeChat()" aria-label="Close chat">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Progress Bar -->
-        <div class="progress-track">
-            <div id="step-bar" class="progress-fill"></div>
-        </div>
-        <div id="step-label" class="step-label"></div>
-
-        <!-- Wizard Screen (single page at a time) -->
-        <div id="chat-screen" class="chat-screen">
-            <div id="typing-indicator" class="typing-indicator hidden">
-                <span></span><span></span><span></span>
-            </div>
-            <div id="chat-question" class="chat-question"></div>
-            <div id="options-container" class="options-container"></div>
-        </div>
-
-        <!-- Options Footer -->
-        <div class="chat-footer">
-            <div class="footer-center">
-                <div class="footer-attribution">
-                    Powered by GuruAi Labs
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <script src="app.js"></script>
 </body>
 </html>
