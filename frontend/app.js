@@ -694,6 +694,25 @@ function renderOptions(res, step) {
 }
 
 function transitionToStep(nextStep) {
+    if (stepHistory.length > 0) {
+        const lastState = stepHistory[stepHistory.length - 1].userData;
+        let msgs = [];
+        for (let key in userData) {
+            if (key !== '_last_user_message' && JSON.stringify(userData[key]) !== JSON.stringify(lastState[key])) {
+                let val = userData[key];
+                if (Array.isArray(val)) val = val.join(", ");
+                msgs.push(String(val));
+            }
+        }
+        if (msgs.length > 0) {
+            userData._last_user_message = msgs.join("\n");
+        }
+    } else if (userData.intent && currentStep === 0) {
+        userData._last_user_message = String(userData.intent);
+    } else if (userData.follow_up_chat) {
+        userData._last_user_message = String(userData.follow_up_chat);
+    }
+
     // Save current state to history before moving forward
     stepHistory.push({
         step: currentStep,
@@ -710,20 +729,10 @@ function transitionToStep(nextStep) {
         chatScreen.style.opacity = '0';
         currentStep = nextStep;
 
-        // Determine what the user just answered by checking difference from history
-        if (stepHistory.length > 0) {
-            const lastState = stepHistory[stepHistory.length - 1].userData;
-            // Find keys in userData that aren't in lastState, or are different
-            for (let key in userData) {
-                if (JSON.stringify(userData[key]) !== JSON.stringify(lastState[key])) {
-                    let val = userData[key];
-                    if (Array.isArray(val)) val = val.join(", ");
-                    userData._last_user_message = String(val);
-                }
-            }
-        }
-
         sendToBackend(currentStep, userData);
+
+        // Clear the one-off message so it doesn't repeat
+        delete userData._last_user_message;
 
         setTimeout(() => {
             chatScreen.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
