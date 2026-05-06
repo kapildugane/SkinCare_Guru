@@ -1259,13 +1259,21 @@ def generate_routine(user_data, db):
     session_id = user_data.get("session_id")
     if session_id:
         try:
+            # Capture a clean summary of user answers for the 'user_activity' column
+            activity_summary = {}
+            for k, v in user_data.items():
+                if k not in ["session_id", "recommended_products", "morning_routine", "evening_routine", "_last_user_message"]:
+                    activity_summary[k] = v
+            activity_str = json.dumps(activity_summary, indent=2)
+
             consultation = Consultation(
                 session_id=session_id,
                 entry_card=user_data.get("intent", "Unknown"),
                 skin_type=user_profile.get("skin_type", ""),
                 concerns=", ".join(user_profile.get("concern", [])),
                 routine_length=len(product_list),
-                products_recommended=len(product_list)
+                products_recommended=len(product_list),
+                user_activity=activity_str
             )
             db.add(consultation)
             db.commit()

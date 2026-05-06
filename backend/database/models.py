@@ -52,4 +52,5 @@ class Consultation(Base):
     concerns = Column(String)
     routine_length = Column(Integer, default=0)
     products_recommended = Column(Integer, default=0)
+    user_activity = Column(Text) # <--- ADDED
     created_at = Column(DateTime(timezone=True), server_default=func.now())

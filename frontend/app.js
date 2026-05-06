@@ -49,7 +49,7 @@ function openChat() {
     chatbotOrb.style.display = 'none'; // Hide orb when chat is open
     const qEl = document.getElementById('chat-question');
     if (currentStep === 0 && qEl && !qEl.textContent.trim()) {
-        sendToBackend(0, {});
+        sendToBackend(0, userData);
     }
 }
 
@@ -771,7 +771,7 @@ function restartChat() {
             <div id="options-container" class="options-container"></div>
         `;
         chatScreen.style.opacity = '1';
-        sendToBackend(0, {});
+        sendToBackend(0, userData);
     }, 300);
 }
 
