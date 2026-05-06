@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from database.db import engine, get_db, Base, validate_db_connection
 from sqlalchemy import func
-from database.models import Product, ChatSession, Consultation
+from database.models import Product, ChatSession, Consultation, ChatMessage
 from rag_engine import retrieve_top_k
 from dotenv import load_dotenv
 
@@ -1378,7 +1378,7 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
                 db.rollback()
 
         if step == 0:
-            return {
+            result = {
                 "message": "Hi! What can I help you with?",
                 "options": [
                     "Build my Routine",
@@ -1388,22 +1388,36 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
                 "next_step": 1,
                 "data_key": "intent"
             }
+        else:
+            intent = user_data.get("intent")
+            if step >= 999:
+                result = handle_follow_up_chat(step, user_data, db)
+            elif intent == "Build my Routine":
+                result = handle_routine_flow(step, user_data, db)
+            elif intent == "Help Me Fix a Concern":
+                result = handle_concern_flow(step, user_data, db)
+            elif intent == "Create My Custom Kit":
+                result = handle_kit_flow(step, user_data, db)
+            else:
+                result = {"message": "Invalid flow", "options": []}
 
-        intent = user_data.get("intent")
+        # Log User and Bot messages
+        if session_id:
+            try:
+                user_msg = user_data.get("_last_user_message")
+                bot_msg = result.get("message")
+                
+                if user_msg:
+                    db.add(ChatMessage(session_id=session_id, sender="user", message=user_msg))
+                if bot_msg:
+                    db.add(ChatMessage(session_id=session_id, sender="bot", message=bot_msg))
+                
+                db.commit()
+            except Exception as e:
+                logger.warning(f"[ChatLog] Failed to log messages: {e}")
+                db.rollback()
 
-        if step >= 999:
-            return handle_follow_up_chat(step, user_data, db)
-
-        if intent == "Build my Routine":
-            return handle_routine_flow(step, user_data, db)
-
-        elif intent == "Help Me Fix a Concern":
-            return handle_concern_flow(step, user_data, db)
-
-        elif intent == "Create My Custom Kit":
-            return handle_kit_flow(step, user_data, db)
-
-        return {"message": "Invalid flow", "options": []}
+        return result
     except Exception as e:
         print(f"Chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail="The chatbot hit an internal error while building your result.")

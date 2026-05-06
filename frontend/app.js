@@ -709,6 +709,20 @@ function transitionToStep(nextStep) {
         chatScreen.style.transform = 'translateX(20px)';
         chatScreen.style.opacity = '0';
         currentStep = nextStep;
+
+        // Determine what the user just answered by checking difference from history
+        if (stepHistory.length > 0) {
+            const lastState = stepHistory[stepHistory.length - 1].userData;
+            // Find keys in userData that aren't in lastState, or are different
+            for (let key in userData) {
+                if (JSON.stringify(userData[key]) !== JSON.stringify(lastState[key])) {
+                    let val = userData[key];
+                    if (Array.isArray(val)) val = val.join(", ");
+                    userData._last_user_message = String(val);
+                }
+            }
+        }
+
         sendToBackend(currentStep, userData);
 
         setTimeout(() => {
