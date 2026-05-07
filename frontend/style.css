@@ -1655,3 +1655,332 @@ body {
     max-width: 240px;
     align-self: flex-end;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Step 2: UI Styles & Animations
+   All classes are scoped to voice-* / .voice-toggle-btn
+   so zero existing styles are overridden.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Voice Toggle Button (in header) ───────────────────── */
+
+.voice-toggle-btn {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* When voice mode is ON — button glows gold */
+.voice-toggle-btn.voice-active {
+    background: rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5),
+                0 0 12px rgba(255, 230, 160, 0.6);
+    animation: voiceBtnPulse 2s ease-in-out infinite;
+}
+
+/* Mic icon: white by default, gold-glow when active */
+.voice-toggle-btn.voice-active i {
+    color: #ffe066;
+    filter: drop-shadow(0 0 4px rgba(255, 220, 80, 0.8));
+}
+
+@keyframes voiceBtnPulse {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(255,255,255,0.5), 0 0 12px rgba(255,230,160,0.5); }
+    50%       { box-shadow: 0 0 0 4px rgba(255,255,255,0.3), 0 0 22px rgba(255,230,160,0.9); }
+}
+
+/* ─── Full-Screen Listening Overlay ─────────────────────── */
+
+.voice-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+    background: rgba(30, 20, 10, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: voiceOverlayIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+.voice-overlay.hidden {
+    display: none;
+}
+
+@keyframes voiceOverlayIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1);    }
+}
+
+/* ─── Pulse Ring Container ───────────────────────────────── */
+
+.voice-overlay-inner {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Three concentric animated rings */
+.voice-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(201, 169, 110, 0.55);
+    animation: voiceRingExpand 2.4s ease-out infinite;
+}
+
+.voice-pulse-ring--2 {
+    animation-delay: 0.8s;
+    border-color: rgba(212, 160, 160, 0.45);
+}
+
+.voice-pulse-ring--3 {
+    animation-delay: 1.6s;
+    border-color: rgba(201, 169, 110, 0.3);
+}
+
+@keyframes voiceRingExpand {
+    0%   { transform: scale(0.6); opacity: 0.9; }
+    70%  { transform: scale(1.55); opacity: 0; }
+    100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* ─── Mic Core (glowing circle at center) ───────────────── */
+
+.voice-pulse-core {
+    position: relative;
+    z-index: 2;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 0 6px rgba(201, 169, 110, 0.2),
+        0 8px 28px rgba(180, 120, 60, 0.55);
+    animation: voiceCoreGlow 1.8s ease-in-out infinite alternate;
+}
+
+.voice-pulse-core i {
+    font-size: 1.6rem;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(100, 60, 20, 0.3));
+}
+
+@keyframes voiceCoreGlow {
+    from { box-shadow: 0 0 0 6px rgba(201,169,110,0.2), 0 8px 28px rgba(180,120,60,0.55); }
+    to   { box-shadow: 0 0 0 12px rgba(201,169,110,0.12), 0 12px 40px rgba(201,169,110,0.65); }
+}
+
+/* ─── Listening Status Label ─────────────────────────────── */
+
+.voice-status-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255, 248, 235, 0.92);
+    letter-spacing: 0.04em;
+    text-align: center;
+    animation: voiceLabelFade 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes voiceLabelFade {
+    from { opacity: 0.65; }
+    to   { opacity: 1; }
+}
+
+/* ─── Cancel Voice Button ────────────────────────────────── */
+
+.voice-cancel-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.4rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(6px);
+}
+
+.voice-cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #fff;
+    transform: scale(1.04);
+}
+
+/* ─── Inline Mic Button (inside text inputs) ─────────────── */
+/* Wired into DOM by app.js in Step 3 — styled here ready to go */
+
+.input-voice-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.12);
+    border: 1.5px solid rgba(201, 169, 110, 0.35);
+    color: var(--gold-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 8px rgba(180, 120, 60, 0.1);
+}
+
+.input-voice-btn:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-color: transparent;
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(180, 120, 60, 0.3);
+}
+
+/* Recording state — red glow */
+.input-voice-btn.recording {
+    background: linear-gradient(135deg, #e05555, #b03030);
+    border-color: transparent;
+    color: #fff;
+    animation: recordingPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes recordingPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 80, 80, 0.5); }
+    50%       { box-shadow: 0 0 0 8px rgba(220, 80, 80, 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Steps 5 & 6: Toast & Permission Styles
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Voice Toast Notification ───────────────────────────── */
+
+.voice-toast {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem 0.7rem 0.9rem;
+    border-radius: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: min(340px, 90vw);
+    white-space: normal;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: toastSlideIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    pointer-events: auto;
+}
+
+/* Info (green tint) */
+.voice-toast--info {
+    background: rgba(240, 255, 244, 0.97);
+    border: 1px solid rgba(100, 200, 130, 0.35);
+    color: #1a5c30;
+}
+
+/* Warning (amber tint) */
+.voice-toast--warn {
+    background: rgba(255, 251, 235, 0.97);
+    border: 1px solid rgba(220, 170, 60, 0.4);
+    color: #7a5500;
+}
+
+/* Error (rose tint) */
+.voice-toast--error {
+    background: rgba(255, 240, 242, 0.97);
+    border: 1px solid rgba(220, 100, 110, 0.35);
+    color: #7a1a22;
+}
+
+.voice-toast-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.voice-toast-text {
+    flex: 1;
+}
+
+.voice-toast-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: inherit;
+    opacity: 0.6;
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease;
+    line-height: 1;
+}
+
+.voice-toast-close:hover {
+    opacity: 1;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+/* ─── Permission Denied Button State ─────────────────────── */
+
+/* Applied by Step 6c when navigator.permissions reports "denied" */
+.voice-toggle-btn.voice-perm-denied {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    position: relative;
+}
+
+/* Small red dot indicator on the button */
+.voice-toggle-btn.voice-perm-denied::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e05555;
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 4px rgba(220, 80, 80, 0.6);
+    animation: permDeniedDot 2s ease-in-out infinite;
+}
+
+@keyframes permDeniedDot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}

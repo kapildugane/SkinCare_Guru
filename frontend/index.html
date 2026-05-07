@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkinCare Guru Expert — AI Powered Beauty Consultant</title>
-    <meta name="description" content="Meet SkinCare Guru Expert — your personal AI-powered beauty consultant. Get curated skincare routines and personalized product picks based on your unique skin profile.">
+    <meta name="description"
+        content="Meet SkinCare Guru Expert — your personal AI-powered beauty consultant. Get curated skincare routines and personalized product picks based on your unique skin profile.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Hero Section -->
@@ -29,7 +34,7 @@
             <p class="hero-eyebrow">Your Personal Beauty Consultant</p>
             <h1 class="hero-title">SkinCare<br><em>Guru Expert</em></h1>
             <p class="hero-subtitle">
-                Unlock your skin's full potential. Our AI analyses your unique profile and crafts a 
+                Unlock your skin's full potential. Our AI analyses your unique profile and crafts a
                 bespoke routine — curated with precision, delivered in seconds.
             </p>
 
@@ -85,6 +90,10 @@
                 <h3 id="chat-header-title">SkinCare Guru</h3>
             </div>
             <div class="header-right">
+                <!-- Voice Mode Toggle -->
+                <button class="header-nav-btn voice-toggle-btn" id="voice-toggle-btn" onclick="toggleVoiceMode()" title="Toggle Voice Mode" aria-label="Toggle voice mode">
+                    <i class="fa-solid fa-microphone-slash" id="voice-toggle-icon"></i>
+                </button>
                 <button class="header-nav-btn" onclick="restartChat()" title="Start Over">
                     <i class="fa-solid fa-rotate-left"></i>
                 </button>
@@ -120,6 +129,25 @@
 
     </div>
 
+    <!-- Voice Status Overlay — shown when Guru is listening -->
+    <div id="voice-overlay" class="voice-overlay hidden" aria-live="polite" aria-label="Voice listening status">
+        <div class="voice-overlay-inner">
+            <!-- Animated pulse rings -->
+            <div class="voice-pulse-ring voice-pulse-ring--1"></div>
+            <div class="voice-pulse-ring voice-pulse-ring--2"></div>
+            <div class="voice-pulse-ring voice-pulse-ring--3"></div>
+            <!-- Mic Icon at center -->
+            <div class="voice-pulse-core">
+                <i class="fa-solid fa-microphone" id="voice-core-icon"></i>
+            </div>
+        </div>
+        <p class="voice-status-label" id="voice-status-label">Listening...</p>
+        <button class="voice-cancel-btn" id="voice-cancel-btn" onclick="cancelVoice()">
+            <i class="fa-solid fa-xmark"></i> Cancel
+        </button>
+    </div>
+
     <script src="app.js"></script>
 </body>
+
 </html>

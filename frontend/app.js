@@ -799,3 +799,714 @@ function goBack() {
         }, 60);
     }, 200);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Step 3: Speech-to-Text (STT) Engine
+   ─────────────────────────────────────────────────────────
+   All code is self-contained in the VoiceAgent namespace.
+   It reads the active DOM textarea but never mutates any
+   existing variable or function defined above this block.
+   ═══════════════════════════════════════════════════════════ */
+
+const VoiceAgent = (() => {
+
+    // ── State ──────────────────────────────────────────────
+    let recognition   = null;   // SpeechRecognition instance (lazy init)
+    let isListening   = false;  // true while mic is open
+    let voiceModeOn   = false;  // true when user has enabled voice mode
+    let finalTranscript = '';   // accumulated result
+
+    // ── DOM refs (resolved once on first use) ─────────────
+    const overlay       = () => document.getElementById('voice-overlay');
+    const statusLabel   = () => document.getElementById('voice-status-label');
+    const toggleBtn     = () => document.getElementById('voice-toggle-btn');
+    const toggleIcon    = () => document.getElementById('voice-toggle-icon');
+
+    // ── Init SpeechRecognition (lazy, with fallback) ───────
+    function initRecognition() {
+        const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SR) return null;
+
+        const r = new SR();
+        r.lang           = 'en-US';
+        r.interimResults = true;   // show partial results in label
+        r.maxAlternatives = 1;
+        r.continuous     = false;  // stop after one utterance
+
+        // ── on partial / final result ──────────────────────
+        r.onresult = (event) => {
+            let interim = '';
+            finalTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const text = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    finalTranscript += text;
+                } else {
+                    interim += text;
+                }
+            }
+
+            // Show live transcription in status label
+            const lbl = statusLabel();
+            if (lbl) lbl.textContent = interim || finalTranscript || 'Listening…';
+        };
+
+        // ── recognition ended (either by silence or manually) ──
+        r.onend = () => {
+            isListening = false;
+
+            if (finalTranscript.trim()) {
+                _injectTranscript(finalTranscript.trim());
+                _showOverlay(false);
+                _setStatusLabel('Listening…');   // reset for next time
+            } else {
+                // Nothing heard — give feedback then close
+                _setStatusLabel('Nothing heard. Try again.');
+                setTimeout(() => {
+                    _showOverlay(false);
+                    _setStatusLabel('Listening…');
+                }, 1800);
+            }
+        };
+
+        // ── error handler ──────────────────────────────────
+        r.onerror = (event) => {
+            isListening = false;
+            const messages = {
+                'not-allowed' : 'Microphone blocked. Please allow access in your browser.',
+                'no-speech'   : 'No speech detected. Please try again.',
+                'network'     : 'Network error. Check your connection.',
+                'audio-capture': 'No microphone found.',
+            };
+            _setStatusLabel(messages[event.error] || 'Error: ' + event.error);
+            setTimeout(() => {
+                _showOverlay(false);
+                _setStatusLabel('Listening…');
+            }, 2200);
+        };
+
+        return r;
+    }
+
+    // ── Find the active textarea in the current DOM ────────
+    function _getActiveTextarea() {
+        // Priority order: concern-textarea > chat-textarea > chat-inline-textarea
+        return (
+            document.querySelector('.concern-textarea') ||
+            document.querySelector('.chat-textarea')    ||
+            document.querySelector('.chat-inline-textarea')
+        );
+    }
+
+    // ── Inject transcript into textarea + trigger handlers ─
+    function _injectTranscript(text) {
+        const ta = _getActiveTextarea();
+        if (!ta) return;
+
+        ta.value = text;
+
+        // Fire native input event so existing oninput / checkFormComplete runs
+        ta.dispatchEvent(new Event('input', { bubbles: true }));
+
+        // Auto-focus so the user can see it
+        ta.focus();
+
+        // Attempt auto-submit: simulate Enter key on send buttons
+        // This triggers the existing submit() closure inside renderConcernQuestion
+        // and the input-container send button — no function references needed.
+        const sendBtn = (
+            document.querySelector('.concern-input-container .send-btn-circle') ||
+            document.querySelector('.input-container .send-btn-circle')
+        );
+        if (sendBtn) {
+            // Small delay so the user sees what was transcribed before it submits
+            setTimeout(() => sendBtn.click(), 600);
+        }
+    }
+
+    // ── Overlay helpers ────────────────────────────────────
+    function _showOverlay(show) {
+        const el = overlay();
+        if (!el) return;
+        if (show) {
+            el.classList.remove('hidden');
+        } else {
+            el.classList.add('hidden');
+        }
+    }
+
+    function _setStatusLabel(text) {
+        const lbl = statusLabel();
+        if (lbl) lbl.textContent = text;
+    }
+
+    // ── Update the header toggle button appearance ─────────
+    function _updateToggleBtn() {
+        const btn  = toggleBtn();
+        const icon = toggleIcon();
+        if (!btn || !icon) return;
+
+        if (voiceModeOn) {
+            btn.classList.add('voice-active');
+            btn.title = 'Voice Mode: ON — click to disable';
+            icon.className = 'fa-solid fa-microphone';
+        } else {
+            btn.classList.remove('voice-active');
+            btn.title = 'Toggle Voice Mode';
+            icon.className = 'fa-solid fa-microphone-slash';
+        }
+    }
+
+    // ── Start listening ────────────────────────────────────
+    function _startListening() {
+        if (isListening) return;
+
+        // Lazy init
+        if (!recognition) {
+            recognition = initRecognition();
+        }
+
+        if (!recognition) {
+            // Step 6: use styled toast instead of browser alert
+            if (typeof _showVoiceToast === 'function') {
+                _showVoiceToast('⚠️ Voice input requires Chrome or Edge browser.', 'warn');
+            }
+            voiceModeOn = false;
+            _updateToggleBtn();
+            return;
+        }
+
+        // Check if there is an active textarea to receive the result
+        if (!_getActiveTextarea()) {
+            _setStatusLabel('Please open a text input first, then tap the mic.');
+            _showOverlay(true);
+            setTimeout(() => _showOverlay(false), 2000);
+            return;
+        }
+
+        finalTranscript = '';
+        _setStatusLabel('Listening…');
+        _showOverlay(true);
+        isListening = true;
+
+        try {
+            recognition.start();
+        } catch (e) {
+            // recognition may already be started — abort and restart
+            recognition.abort();
+            setTimeout(() => {
+                isListening = false;
+                _startListening();
+            }, 300);
+        }
+    }
+
+    // ── Public API ─────────────────────────────────────────
+
+    /** Called by onclick="toggleVoiceMode()" on the header button */
+    function toggleVoiceMode() {
+        voiceModeOn = !voiceModeOn;
+        _updateToggleBtn();
+
+        if (voiceModeOn) {
+            // Immediately start listening when turned on
+            _startListening();
+        } else {
+            // Turn off — abort any active session
+            if (isListening && recognition) {
+                recognition.abort();
+                isListening = false;
+            }
+            _showOverlay(false);
+        }
+    }
+
+    /** Called by onclick="cancelVoice()" on the overlay cancel button */
+    function cancelVoice() {
+        if (isListening && recognition) {
+            recognition.abort();
+            isListening = false;
+        }
+        _showOverlay(false);
+        _setStatusLabel('Listening…');
+    }
+
+    return { toggleVoiceMode, cancelVoice, listen: _startListening, isOn: () => voiceModeOn, isListeningNow: () => isListening };
+
+})();
+
+// ── Expose to global scope (required by HTML onclick attributes) ──
+function toggleVoiceMode() { VoiceAgent.toggleVoiceMode(); }
+function cancelVoice()     { VoiceAgent.cancelVoice();     }
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Step 4: Text-to-Speech (TTS) Engine
+   ─────────────────────────────────────────────────────────
+   Strategy: MutationObserver on document.body watches for
+   new .bot-bubble elements. When voice mode is ON, their
+   text content is spoken using SpeechSynthesis.
+   Zero existing functions are modified.
+   ═══════════════════════════════════════════════════════════ */
+
+const TTSAgent = (() => {
+
+    // ── State ──────────────────────────────────────────────
+    let selectedVoice  = null;   // best available voice (resolved async)
+    let isSpeaking     = false;
+
+    // Max characters to read aloud (prevents reading 3-minute essays)
+    const MAX_SPEAK_CHARS = 380;
+
+    // ── Voice priority list (best → acceptable fallback) ──
+    const PREFERRED_VOICES = [
+        'Google UK English Female',
+        'Google US English',
+        'Microsoft Zira - English (United States)',
+        'Microsoft Hazel - English (Great Britain)',
+        'Samantha',    // macOS/iOS
+        'Karen',       // macOS
+        'Victoria',    // macOS
+    ];
+
+    // ── Resolve the best available voice ──────────────────
+    function _pickBestVoice() {
+        const voices = window.speechSynthesis.getVoices();
+        if (!voices || voices.length === 0) return null;
+
+        // Try preferred voices in order
+        for (const name of PREFERRED_VOICES) {
+            const match = voices.find(v => v.name === name);
+            if (match) return match;
+        }
+
+        // Fall back to any English voice
+        const english = voices.find(v => v.lang.startsWith('en'));
+        return english || voices[0];
+    }
+
+    // ── Strip HTML tags and markdown for clean speech ─────
+    function _cleanTextForSpeech(rawHtml) {
+        // Remove HTML tags
+        let text = rawHtml.replace(/<[^>]*>/g, ' ');
+
+        // Remove markdown bold/italic/headers
+        text = text
+            .replace(/\*\*(.*?)\*\*/g, '$1')
+            .replace(/\*(.*?)\*/g,     '$1')
+            .replace(/^#{1,6}\s*/gm,   '')
+            .replace(/^[-•]\s+/gm,     '')   // bullet points → plain text
+            .replace(/Step\s+\d+:\s*/gi, '') // strip "Step 1:" prefixes
+            .replace(/\s{2,}/g,        ' ')
+            .trim();
+
+        // Decode common HTML entities
+        text = text
+            .replace(/&amp;/g,  '&')
+            .replace(/&nbsp;/g, ' ')
+            .replace(/&bull;/g, '')
+            .replace(/&#8226;/g,'');
+
+        return text;
+    }
+
+    // ── Build a short speakable summary from bubble text ──
+    function _buildSpeakable(bubble) {
+        const bodyEl = bubble.querySelector('.bubble-body');
+        if (!bodyEl) return '';
+
+        const raw  = bodyEl.innerHTML || bodyEl.textContent || '';
+        const text = _cleanTextForSpeech(raw);
+
+        if (!text) return '';
+
+        // If the text is long (e.g. a full recommendation), read a friendly
+        // intro sentence + the first ~2 sentences, then tell user to scroll.
+        if (text.length > MAX_SPEAK_CHARS) {
+            // Extract up to 2 sentences
+            const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
+            const intro = sentences.slice(0, 2).join(' ').trim();
+            const short = intro.length > 40 ? intro : text.substring(0, MAX_SPEAK_CHARS);
+            return short + '… Scroll to read the full recommendation.';
+        }
+
+        return text;
+    }
+
+    // ── Speak a piece of text ──────────────────────────────
+    function speak(text) {
+        if (!text || !window.speechSynthesis) return;
+
+        // Cancel any currently playing speech
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+
+        const utterance = new SpeechSynthesisUtterance(text);
+
+        // Resolve voice (voices may not be ready on first call)
+        if (!selectedVoice) selectedVoice = _pickBestVoice();
+        if (selectedVoice) utterance.voice = selectedVoice;
+
+        utterance.rate   = 0.96;  // Slightly slower — feels more consultative
+        utterance.pitch  = 1.0;
+        utterance.volume = 1.0;
+
+        utterance.onstart = () => { isSpeaking = true; };
+        utterance.onend   = () => { isSpeaking = false; };
+        utterance.onerror = () => { isSpeaking = false; };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // ── Stop any ongoing speech ────────────────────────────
+    function stop() {
+        if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            isSpeaking = false;
+        }
+    }
+
+    // ── MutationObserver: watch for new bot bubbles ────────
+    function _startObserver() {
+        const observer = new MutationObserver((mutations) => {
+            // Only act when voice mode is ON (reads VoiceAgent internal state
+            // indirectly via the CSS class on the toggle button)
+            const toggleBtn = document.getElementById('voice-toggle-btn');
+            if (!toggleBtn || !toggleBtn.classList.contains('voice-active')) return;
+
+            for (const mutation of mutations) {
+                for (const node of mutation.addedNodes) {
+                    if (!(node instanceof Element)) continue;
+
+                    // Direct match — the node itself is a bot-bubble
+                    if (node.classList.contains('bot-bubble') &&
+                        !node.classList.contains('typing-bubble')) {
+                        const text = _buildSpeakable(node);
+                        if (text) speak(text);
+                        return;  // Only speak one bubble per mutation batch
+                    }
+
+                    // Descendant match — bubble was added inside a container
+                    const bubbles = node.querySelectorAll(
+                        '.bot-bubble:not(.typing-bubble)'
+                    );
+                    if (bubbles.length > 0) {
+                        // Speak only the last (most recent) bubble
+                        const last = bubbles[bubbles.length - 1];
+                        const text = _buildSpeakable(last);
+                        if (text) speak(text);
+                        return;
+                    }
+                }
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree:   true
+        });
+    }
+
+    // ── Also speak wizard questions (non-bubble screens) ──
+    // These are rendered into #chat-question, not .bot-bubble
+    function _watchWizardQuestion() {
+        const qEl = document.getElementById('chat-question');
+        if (!qEl) return;
+
+        const qObserver = new MutationObserver(() => {
+            const toggleBtn = document.getElementById('voice-toggle-btn');
+            if (!toggleBtn || !toggleBtn.classList.contains('voice-active')) return;
+
+            const raw  = qEl.innerHTML || '';
+            const text = _cleanTextForSpeech(raw);
+            if (text && text.length > 3) speak(text);
+        });
+
+        qObserver.observe(qEl, { childList: true, subtree: true, characterData: true });
+    }
+
+    // ── Bootstrap on DOM ready ─────────────────────────────
+    function init() {
+        // Pre-load voices (Chrome requires a user gesture or voiceschanged event)
+        if (window.speechSynthesis) {
+            // Voices may load async in Chrome
+            window.speechSynthesis.onvoiceschanged = () => {
+                selectedVoice = _pickBestVoice();
+            };
+            // Try immediately (works in Firefox / Safari)
+            selectedVoice = _pickBestVoice();
+        }
+
+        _startObserver();
+
+        // Watch the wizard question element — it exists in the initial HTML
+        // but may be replaced by renderStep; re-attach after each transition.
+        // We poll lightly for #chat-question in case it gets swapped.
+        setInterval(() => {
+            const q = document.getElementById('chat-question');
+            if (q && !q._ttsWatched) {
+                q._ttsWatched = true;
+                const qObs = new MutationObserver(() => {
+                    const toggleBtn = document.getElementById('voice-toggle-btn');
+                    if (!toggleBtn || !toggleBtn.classList.contains('voice-active')) return;
+                    const text = _cleanTextForSpeech(q.innerHTML || '');
+                    if (text && text.length > 3) speak(text);
+                });
+                qObs.observe(q, { childList: true, subtree: true, characterData: true });
+            }
+        }, 800);
+    }
+
+    return { init, speak, stop, isSpeakingNow: () => isSpeaking };
+
+})();
+
+// ── Boot TTS when DOM is ready ─────────────────────────────
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => TTSAgent.init());
+} else {
+    TTSAgent.init();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Step 5: Core Logic Sync (Auto-Loop)
+   ─────────────────────────────────────────────────────────
+   After TTS finishes speaking a bot message, automatically
+   re-open the mic so the conversation flows hands-free.
+   Uses polling against SpeechSynthesis.speaking + public
+   APIs exposed by VoiceAgent & TTSAgent — zero closures opened.
+   ═══════════════════════════════════════════════════════════ */
+
+const VoiceLoopSync = (() => {
+
+    let loopTimer  = null;   // setInterval handle
+    let lastBotMsg = '';     // prevent re-speaking the same message
+
+    // ── How long after TTS ends before mic re-opens (ms) ──
+    const RESTART_DELAY_MS = 900;
+
+    // ── Check if an input textarea is currently visible ───
+    function _hasActiveInput() {
+        return !!(
+            document.querySelector('.concern-textarea') ||
+            document.querySelector('.chat-textarea')    ||
+            document.querySelector('.chat-inline-textarea')
+        );
+    }
+
+    // ── Core loop tick ────────────────────────────────────
+    function _tick() {
+        // Only run when voice mode is ON
+        if (!VoiceAgent.isOn()) return;
+
+        // Don't start STT while TTS is speaking
+        if (TTSAgent.isSpeakingNow()) return;
+
+        // Don't start STT while already listening
+        if (VoiceAgent.isListeningNow()) return;
+
+        // Only start if there's a textarea to receive input
+        if (!_hasActiveInput()) return;
+
+        // Re-open mic after a short natural pause
+        setTimeout(() => {
+            // Double-check nothing changed during the delay
+            if (!VoiceAgent.isOn())          return;
+            if (TTSAgent.isSpeakingNow())    return;
+            if (VoiceAgent.isListeningNow()) return;
+            if (!_hasActiveInput())          return;
+
+            VoiceAgent.listen();
+        }, RESTART_DELAY_MS);
+    }
+
+    function start() {
+        if (loopTimer) return;
+        // Poll every 600ms — lightweight, no DOM thrashing
+        loopTimer = setInterval(_tick, 600);
+    }
+
+    function stop() {
+        if (loopTimer) {
+            clearInterval(loopTimer);
+            loopTimer = null;
+        }
+    }
+
+    // Auto-start the loop when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', start);
+    } else {
+        start();
+    }
+
+    return { start, stop };
+
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   VOICE AGENT — Step 6: Permissions & Error Handling
+   ─────────────────────────────────────────────────────────
+   1. Browser compatibility check — hides voice button if
+      SpeechRecognition is not available.
+   2. Microphone permission pre-check — warns user BEFORE
+      they tap the mic if permission is denied.
+   3. Styled toast notification system — replaces browser
+      alert() with a premium in-app notification.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Step 6a: Styled Toast Notification System ────────────
+   _showVoiceToast(message, type) is referenced by VoiceAgent
+   (Step 3) via typeof guard — it must be defined globally.   */
+
+function _showVoiceToast(message, type = 'info') {
+    // Remove any existing toast
+    const existing = document.getElementById('voice-toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'voice-toast';
+    toast.className = `voice-toast voice-toast--${type}`;
+    toast.setAttribute('role', 'alert');
+    toast.innerHTML = `
+        <span class="voice-toast-icon">${type === 'warn' ? '⚠️' : type === 'error' ? '🚫' : '✅'}</span>
+        <span class="voice-toast-text">${message}</span>
+        <button class="voice-toast-close" onclick="this.parentElement.remove()">✕</button>
+    `;
+
+    // Insert inside chat window if open, otherwise body
+    const chatWindow = document.getElementById('chat-window');
+    const target = (chatWindow && !chatWindow.classList.contains('hidden'))
+        ? chatWindow
+        : document.body;
+
+    target.appendChild(toast);
+
+    // Auto-dismiss after 4 seconds
+    setTimeout(() => { if (toast.parentElement) toast.remove(); }, 4000);
+}
+
+/* ── Step 6b: Browser Compatibility Check ─────────────────
+   Runs once on load. Hides the voice toggle if STT is
+   unavailable, and adds a tooltip explaining why.            */
+
+function _checkVoiceCompatibility() {
+    const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+    const btn = document.getElementById('voice-toggle-btn');
+    if (!btn) return;
+
+    if (!supported) {
+        btn.style.opacity  = '0.35';
+        btn.style.cursor   = 'not-allowed';
+        btn.title = 'Voice input requires Chrome or Edge browser';
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            _showVoiceToast('⚠️ Voice input requires Chrome or Edge. Your current browser is not supported.', 'warn');
+        };
+    }
+}
+
+/* ── Step 6c: Microphone Permission Pre-Check ─────────────
+   Uses navigator.permissions (where available) to check mic
+   state before the user even taps the button. If denied,
+   we show a toast with actionable instructions immediately.  */
+
+async function _checkMicPermission() {
+    if (!navigator.permissions) return;  // not available in all browsers
+
+    try {
+        const status = await navigator.permissions.query({ name: 'microphone' });
+
+        if (status.state === 'denied') {
+            // Mark the toggle button as denied
+            const btn = document.getElementById('voice-toggle-btn');
+            if (btn) {
+                btn.title = 'Microphone blocked — click for help';
+                btn.classList.add('voice-perm-denied');
+            }
+        }
+
+        // React to live permission changes (e.g. user grants from browser bar)
+        status.onchange = () => {
+            const btn = document.getElementById('voice-toggle-btn');
+            if (!btn) return;
+
+            if (status.state === 'granted') {
+                btn.classList.remove('voice-perm-denied');
+                btn.title = 'Toggle Voice Mode';
+                _showVoiceToast('✅ Microphone access granted! Tap the mic to start.', 'info');
+            } else if (status.state === 'denied') {
+                btn.classList.add('voice-perm-denied');
+                btn.title = 'Microphone blocked — click for help';
+                if (VoiceAgent.isOn()) {
+                    // Force voice mode off
+                    VoiceAgent.toggleVoiceMode();
+                }
+                _showVoiceToast('🚫 Microphone was blocked. Please allow access in browser settings.', 'error');
+            }
+        };
+    } catch (_) {
+        // navigator.permissions.query may throw on some browsers — silently ignore
+    }
+}
+
+/* ── Step 6d: Permission-aware toggle override ────────────
+   Wraps the header button click to check mic state first
+   and show a helpful toast if denied, instead of failing silently. */
+
+(function _patchVoiceToggleForPermissions() {
+    // Wait for DOM to be ready
+    const boot = () => {
+        const btn = document.getElementById('voice-toggle-btn');
+        if (!btn) return;
+
+        // Store original onclick
+        const _originalOnClick = btn.onclick;
+
+        btn.onclick = async (e) => {
+            // If browser doesn't support STT, let the existing handler show toast
+            const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+            if (!supported) {
+                _showVoiceToast('⚠️ Voice input requires Chrome or Edge browser.', 'warn');
+                return;
+            }
+
+            // Check mic permission before toggling ON
+            if (!VoiceAgent.isOn() && navigator.permissions) {
+                try {
+                    const status = await navigator.permissions.query({ name: 'microphone' });
+                    if (status.state === 'denied') {
+                        _showVoiceToast(
+                            '🚫 Microphone access is blocked. Click the lock icon in your browser address bar → allow microphone → refresh.',
+                            'error'
+                        );
+                        return;
+                    }
+                } catch (_) { /* permissions API not available — proceed */ }
+            }
+
+            // All good — call original toggle
+            if (_originalOnClick) _originalOnClick.call(btn, e);
+        };
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', boot);
+    } else {
+        boot();
+    }
+})();
+
+/* ── Step 6 Bootstrap ─────────────────────────────────────── */
+(function _bootStep6() {
+    const run = () => {
+        _checkVoiceCompatibility();
+        _checkMicPermission();
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+    } else {
+        run();
+    }
+})();
