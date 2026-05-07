@@ -11,7 +11,20 @@ logger = logging.getLogger(__name__)
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 # Use DATABASE_URL from .env if it exists, otherwise fallback to local sqlite
-SQLALCHEMY_DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///./skincare.db')
+SQLALCHEMY_DATABASE_URL = os.getenv('DATABASE_URL')
+
+# Check if we are in production (e.g. Render)
+IS_PRODUCTION = os.getenv('RENDER') is not None or os.getenv('PORT') is not None
+
+if not SQLALCHEMY_DATABASE_URL:
+    if IS_PRODUCTION:
+        logger.error("[DB] CRITICAL: DATABASE_URL environment variable is MISSING on Render.")
+        logger.error("[DB] Falling back to local SQLite, but data will NOT be saved to Supabase!")
+    else:
+        logger.info("[DB] No DATABASE_URL found, using local SQLite (development mode).")
+    SQLALCHEMY_DATABASE_URL = 'sqlite:///./skincare.db'
+
+logger.info(f"[DB] Initializing engine for: {'PostgreSQL' if 'postgresql' in SQLALCHEMY_DATABASE_URL.lower() else 'SQLite'}")
 
 if SQLALCHEMY_DATABASE_URL.startswith('sqlite'):
     engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={'check_same_thread': False})
@@ -19,8 +32,8 @@ else:
     # Supabase/Postgres — use connection pool settings suitable for a pooler
     engine = create_engine(
         SQLALCHEMY_DATABASE_URL,
-        pool_pre_ping=True,       # Detect stale connections before use
-        pool_recycle=300,         # Recycle connections every 5 min (Supabase pooler timeout)
+        pool_pre_ping=True,
+        pool_recycle=300,
         connect_args={"connect_timeout": 10},
     )
 
