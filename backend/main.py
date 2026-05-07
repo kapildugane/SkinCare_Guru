@@ -1478,6 +1478,10 @@ frontend_path = os.path.join(BASE_DIR, "..", "frontend")
 async def health_check():
     return {"status": "ok"}
 
+@app.get("/api/version")
+async def get_version():
+    return {"version": "1.0.2-sync-fixed", "db_type": "PostgreSQL" if "postgresql" in (os.getenv("DATABASE_URL") or "").lower() else "SQLite"}
+
 @app.get("/")
 async def serve_index():
     return FileResponse(os.path.join(frontend_path, "index.html"))
