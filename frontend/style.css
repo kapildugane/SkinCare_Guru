@@ -1286,9 +1286,9 @@ body {
     padding: 0.55rem 0.9rem; /* Reduced padding */
 }
 
-/* Hide avatars to match clean reference look */
+/* Avatars visibility */
 .bubble-avatar {
-    display: none !important;
+    display: flex !important;
 }
 
 .bubble-body {
@@ -1610,17 +1610,19 @@ body {
 }
 
 .chat-screen.concern-assessment-screen .concern-question-bubble {
-    background: #f7f1e6;
-    color: #5a4a3b;
-    border-bottom-left-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background: var(--bot-bg);
+    color: var(--text-dark);
+    border: 1px solid var(--glass-border);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .chat-screen.concern-assessment-screen .user-bubble {
     align-self: flex-end;
-    background: #fbe8ef;
-    color: #7d4a58;
-    border-bottom-right-radius: 6px;
+    background: var(--user-bg);
+    color: var(--text-dark);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-bottom-right-radius: 4px;
 }
 
 .chat-screen.concern-assessment-screen .bubble-body {
@@ -1632,6 +1634,7 @@ body {
 .chat-screen.concern-assessment-screen .user-bubble .bubble-body {
     text-align: right;
     font-weight: 500;
+    color: var(--gold-light);
 }
 
 .chat-screen.concern-assessment-screen .concern-input-container {
