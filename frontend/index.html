@@ -13,7 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -91,7 +91,7 @@
             </div>
             <div class="header-right">
                 <!-- Voice Mode Toggle -->
-                <button class="header-nav-btn voice-toggle-btn" id="voice-toggle-btn" onclick="toggleVoiceMode()" title="Toggle Voice Mode" aria-label="Toggle voice mode">
+                <button class="header-nav-btn voice-toggle-btn hidden" id="voice-toggle-btn" onclick="toggleVoiceMode()" title="Toggle Voice Mode" aria-label="Toggle voice mode">
                     <i class="fa-solid fa-microphone-slash" id="voice-toggle-icon"></i>
                 </button>
                 <button class="header-nav-btn" onclick="restartChat()" title="Start Over">

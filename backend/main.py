@@ -353,6 +353,19 @@ def handle_kit_flow(step, user_data, db):
         return generate_routine(user_data, db)
 
 
+
+def handle_conversational_flow(step, user_data, db):
+    if step == 1:
+        return {
+            "type": "input",
+            "message": "Hii! I'm your Skincare Guru. How can I help you today? You can tell me about your skin concerns, ask for routine advice, or just say hello!",
+            "placeholder": "Speak or type your question...",
+            "next_step": 999,
+            "data_key": "follow_up_chat"
+        }
+    return handle_follow_up_chat(step, user_data, db)
+
+
 # ---------------- AI + RAG ---------------- #
 
 def ask_llm(prompt, system_prompt=None):
@@ -1391,7 +1404,8 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
                 "options": [
                     "Build my Routine",
                     "Help Me Fix a Concern",
-                    "Create My Custom Kit"
+                    "Create My Custom Kit",
+                    "Hii, how can i help you"
                 ],
                 "next_step": 1,
                 "data_key": "intent"
@@ -1406,6 +1420,8 @@ async def chat_endpoint(req: ChatRequest, db: Session = Depends(get_db)):
                 result = handle_concern_flow(step, user_data, db)
             elif intent == "Create My Custom Kit":
                 result = handle_kit_flow(step, user_data, db)
+            elif intent == "Hii, how can i help you":
+                result = handle_conversational_flow(step, user_data, db)
             else:
                 result = {"message": "Invalid flow", "options": []}
 

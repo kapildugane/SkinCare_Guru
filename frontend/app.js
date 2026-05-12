@@ -26,7 +26,8 @@ let isConversationalMode = false;
 const TITLE_MAP = {
     "Build my Routine": "Routine Builder",
     "Help Me Fix a Concern": "Concern Assessment",
-    "Create My Custom Kit": "Custom Kit Creator"
+    "Create My Custom Kit": "Custom Kit Creator",
+    "Hii, how can i help you": "AI Voice Assistant"
 };
 
 const ENTRY_MAP = {
@@ -41,6 +42,10 @@ const ENTRY_MAP = {
     "Create My Custom Kit": {
         icon: "fa-box-open",
         desc: "Identify your skin type and get a customized recommendation for your daily core."
+    },
+    "Hii, how can i help you": {
+        icon: "fa-microphone-lines",
+        desc: "Chat naturally with our AI assistant for personalized advice and instant answers."
     }
 };
 
@@ -660,6 +665,16 @@ function renderOptions(res, step) {
         textarea.onkeydown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } };
 
         if (optsEl) optsEl.appendChild(container);
+        
+        // Auto-trigger voice mode if this was the conversational intent
+        if (userData.intent === "Hii, how can i help you") {
+            setTimeout(() => {
+                if (typeof toggleVoiceMode === 'function' && !VoiceAgent.isOn()) {
+                    toggleVoiceMode();
+                }
+            }, 800);
+        }
+        
         setTimeout(() => textarea.focus(), 400);
     } else if (res.options && res.options.length > 0) {
         res.options.forEach((opt, i) => {
