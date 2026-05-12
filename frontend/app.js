@@ -255,7 +255,7 @@ function appendBotMessage(text, products, container) {
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble bot-bubble';
     bubble.innerHTML = `
-        <div class="bubble-avatar"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="bubble-avatar"><img src="images/guru-logo.png" alt="Guru"></div>
         <div class="bubble-body">${buildMessageHTML(text, products)}</div>
     `;
 
@@ -286,7 +286,7 @@ function appendTypingBubble(container) {
     bubble.className = 'chat-bubble bot-bubble typing-bubble';
     bubble.id = 'inline-typing';
     bubble.innerHTML = `
-        <div class="bubble-avatar"><i class="fa-solid fa-sparkles"></i></div>
+        <div class="bubble-avatar"><img src="images/guru-logo.png" alt="Guru"></div>
         <div class="bubble-body">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
