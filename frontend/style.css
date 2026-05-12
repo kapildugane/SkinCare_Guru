@@ -5,20 +5,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
 
 :root {
-    --gold: #c9a96e;
-    --gold-light: #e8d5b0;
-    --gold-dark: #a07840;
-    --rose: #d4a0a0;
-    --cream: #fefaf5;
-    --text-dark: #2c2218;
-    --text-mid: #5c4a3a;
-    --text-light: #8c7a6a;
-    --glass-bg: rgba(255, 252, 248, 0.72);
-    --glass-border: rgba(255, 255, 255, 0.55);
-    --shadow-warm: rgba(180, 130, 80, 0.18);
-    --bot-bg: rgba(255, 255, 255, 0.95);
-    --user-bg: rgba(255, 245, 230, 0.95);
-    --chat-accent: linear-gradient(135deg, #c9a96e 0%, #bc8f8f 100%);
+    --gold: #d4af37;
+    --gold-light: #f3e5ab;
+    --gold-dark: #aa8c2c;
+    --rose: #b76e79;
+    --cream: #121212;
+    --text-dark: #ffffff;
+    --text-mid: #e0e0e0;
+    --text-light: #a0a0a0;
+    --glass-bg: rgba(20, 20, 20, 0.85);
+    --glass-border: rgba(212, 175, 55, 0.3);
+    --shadow-warm: rgba(212, 175, 55, 0.2);
+    --bot-bg: rgba(40, 40, 40, 0.95);
+    --user-bg: rgba(212, 175, 55, 0.15);
+    --chat-accent: linear-gradient(135deg, #d4af37 0%, #b76e79 100%);
 }
 
 *,
@@ -55,10 +55,10 @@ body {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg,
-            rgba(255, 248, 240, 0.55) 0%,
-            rgba(255, 240, 230, 0.35) 50%,
-            rgba(240, 220, 210, 0.45) 100%);
-    backdrop-filter: blur(1px);
+            rgba(15, 15, 15, 0.85) 0%,
+            rgba(10, 10, 10, 0.75) 50%,
+            rgba(5, 5, 5, 0.85) 100%);
+    backdrop-filter: blur(4px);
 }
 
 /* ─── Floating Badge ────────────────────────────────────── */
@@ -71,7 +71,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(40, 40, 40, 0.6);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
     padding: 0.45rem 1.4rem;
@@ -107,7 +107,7 @@ body {
     width: min(92vw, 860px);
     box-shadow:
         0 8px 32px var(--shadow-warm),
-        0 1px 0 rgba(255, 255, 255, 0.8) inset;
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
 
 .hero-eyebrow {
@@ -115,7 +115,7 @@ body {
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gold-dark);
+    color: var(--gold-light);
     margin-bottom: 1.2rem;
     opacity: 0.85;
 }
@@ -174,12 +174,12 @@ body {
     letter-spacing: 0.03em;
     cursor: pointer;
     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 0 6px 24px rgba(180, 120, 60, 0.35);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(180, 120, 60, 0.45);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.45);
     gap: 1rem;
 }
 
@@ -190,7 +190,7 @@ body {
     padding: 1rem 1.8rem;
     background: transparent;
     color: var(--text-mid);
-    border: 1px solid rgba(180, 140, 100, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 50px;
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
@@ -201,7 +201,7 @@ body {
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(40, 40, 40, 0.6);
     border-color: var(--gold);
     color: var(--gold-dark);
 }
@@ -214,7 +214,7 @@ body {
     justify-content: center;
     gap: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(180, 150, 110, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .trust-item {
@@ -228,7 +228,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--gold-dark);
+    color: var(--gold-light);
     line-height: 1;
 }
 
@@ -243,7 +243,7 @@ body {
 .trust-divider {
     width: 1px;
     height: 2rem;
-    background: rgba(180, 150, 110, 0.25);
+    background: rgba(212, 175, 55, 0.25);
 }
 
 /* ─── Chatbot Orb ───────────────────────────────────────── */
@@ -271,8 +271,8 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    box-shadow: 0 8px 28px rgba(180, 120, 60, 0.45),
-        0 0 0 0 rgba(201, 169, 110, 0.4);
+    box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45),
+        0 0 0 0 rgba(212, 175, 55, 0.4);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     animation: pulse-ring 2.5s ease-out infinite;
 }
@@ -286,12 +286,12 @@ body {
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold-dark);
-    background: rgba(255, 255, 255, 0.85);
+    color: var(--text-dark);
+    background: rgba(30, 30, 30, 0.85);
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(201, 169, 110, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 /* ─── Chat Window ───────────────────────────────────────── */
@@ -306,8 +306,8 @@ body {
     background: var(--cream);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    box-shadow: 0 24px 60px rgba(100, 60, 30, 0.15),
-        0 8px 20px rgba(100, 60, 30, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15),
+        0 8px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -347,7 +347,7 @@ body {
     align-items: center;
     flex-shrink: 0;
     position: relative;
-    box-shadow: 0 4px 12px rgba(100, 60, 30, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .header-left,
@@ -397,7 +397,7 @@ body {
 }
 
 .header-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(40, 40, 40, 0.6);
     color: #fff;
     transform: scale(1.1);
 }
@@ -406,7 +406,7 @@ body {
 
 .progress-track {
     height: 3px;
-    background: rgba(201, 169, 110, 0.15);
+    background: rgba(212, 175, 55, 0.15);
     flex-shrink: 0;
 }
 
@@ -435,7 +435,7 @@ body {
     display: flex;
     flex-direction: column;
     scrollbar-width: thin;
-    scrollbar-color: rgba(201, 169, 110, 0.3) transparent;
+    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
 }
 
 /* Flex spacer to push content to bottom */
@@ -464,7 +464,7 @@ body {
 }
 
 .chat-screen::-webkit-scrollbar-thumb {
-    background: rgba(201, 169, 110, 0.3);
+    background: rgba(212, 175, 55, 0.3);
     border-radius: 4px;
 }
 
@@ -486,8 +486,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 250, 245, 0.9);
-    border: 1px solid rgba(201, 169, 110, 0.2);
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     padding: 1.2rem;
     border-radius: 16px;
     margin-top: 0.8rem;
@@ -499,7 +499,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(100, 60, 30, 0.12);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .product-img {
@@ -510,8 +510,8 @@ body {
     margin-right: 0;
     margin-bottom: 12px;
     flex-shrink: 0;
-    border: 1px solid rgba(201, 169, 110, 0.25);
-    box-shadow: 0 4px 12px rgba(100, 60, 30, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .product-info h4 {
@@ -531,8 +531,8 @@ body {
 
 .chat-footer {
     padding: 0.6rem 1.25rem;
-    background: rgba(255, 252, 248, 0.98);
-    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    background: rgba(18, 18, 18, 0.98);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
     flex-shrink: 0;
 }
 
@@ -568,7 +568,7 @@ body {
 .option-btn {
     padding: 0.55rem 1.15rem;
     border: 1.5px solid var(--gold);
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(40, 40, 40, 0.6);
     color: var(--gold-dark);
     border-radius: 50px;
     cursor: pointer;
@@ -585,7 +585,7 @@ body {
     color: #fff;
     border-color: transparent;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(180, 120, 60, 0.35);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
 }
 
 /* ─── Entry Cards (Step 0) ───────────────────────────────── */
@@ -596,8 +596,8 @@ body {
     gap: 1.2rem;
     width: 100%;
     padding: 1.1rem 1.4rem;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(201, 169, 110, 0.25);
+    background: rgba(30, 30, 30, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.25);
     border-radius: 18px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2);
@@ -608,10 +608,10 @@ body {
 }
 
 .entry-card:hover {
-    background: #fff;
+    background: rgba(40, 40, 40, 0.9);
     transform: translateY(-3px) scale(1.02);
     border-color: var(--gold);
-    box-shadow: 0 10px 25px rgba(180, 130, 80, 0.15);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
 }
 
 .entry-card-icon {
@@ -620,12 +620,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, rgba(201, 169, 110, 0.1), rgba(212, 160, 160, 0.1));
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 160, 160, 0.1));
     border-radius: 12px;
     color: var(--gold-dark);
     font-size: 1.25rem;
     flex-shrink: 0;
-    border: 1px solid rgba(201, 169, 110, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .entry-card-info {
@@ -682,7 +682,7 @@ body {
     overflow-x: auto;
     padding-bottom: 0.8rem;
     scrollbar-width: thin;
-    scrollbar-color: rgba(201, 169, 110, 0.3) transparent;
+    scrollbar-color: rgba(212, 175, 55, 0.3) transparent;
 }
 
 .product-list::-webkit-scrollbar {
@@ -694,7 +694,7 @@ body {
 }
 
 .product-list::-webkit-scrollbar-thumb {
-    background: rgba(201, 169, 110, 0.3);
+    background: rgba(212, 175, 55, 0.3);
     border-radius: 4px;
 }
 
@@ -709,8 +709,8 @@ body {
     display: inline-flex;
     gap: 5px;
     align-items: center;
-    box-shadow: 0 2px 12px rgba(100, 60, 30, 0.07);
-    border: 1px solid rgba(201, 169, 110, 0.15);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     margin-bottom: 0.5rem;
 }
 
@@ -794,15 +794,15 @@ body {
 
 @keyframes pulse-ring {
     0% {
-        box-shadow: 0 8px 28px rgba(180, 120, 60, 0.45), 0 0 0 0 rgba(201, 169, 110, 0.5);
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45), 0 0 0 0 rgba(212, 175, 55, 0.5);
     }
 
     70% {
-        box-shadow: 0 8px 28px rgba(180, 120, 60, 0.45), 0 0 0 18px rgba(201, 169, 110, 0);
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45), 0 0 0 18px rgba(212, 175, 55, 0);
     }
 
     100% {
-        box-shadow: 0 8px 28px rgba(180, 120, 60, 0.45), 0 0 0 0 rgba(201, 169, 110, 0);
+        box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45), 0 0 0 0 rgba(212, 175, 55, 0);
     }
 }
 
@@ -913,21 +913,21 @@ body {
     background: linear-gradient(135deg, var(--gold), var(--gold-dark));
     color: #fff;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(180, 120, 60, 0.3);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3);
     opacity: 1;
     animation: btnUnlock 0.5s ease both;
 }
 
 .btn-large.btn-ready:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 26px rgba(180, 120, 60, 0.4);
+    box-shadow: 0 10px 26px rgba(212, 175, 55, 0.4);
 }
 
 /* Subtle glow-pulse that fires once when the button unlocks */
 @keyframes btnUnlock {
-    0%   { box-shadow: 0 0 0 0 rgba(201, 169, 110, 0); }
-    30%  { box-shadow: 0 0 0 8px rgba(201, 169, 110, 0.35); }
-    100% { box-shadow: 0 6px 18px rgba(180, 120, 60, 0.3); }
+    0%   { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    30%  { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.35); }
+    100% { box-shadow: 0 6px 18px rgba(212, 175, 55, 0.3); }
 }
 
 /* ─── Vertical Cards (Step 1 of Concern) ─────────────────── */
@@ -935,21 +935,21 @@ body {
 .vertical-card {
     width: 100%;
     padding: 1.25rem 1.5rem;
-    background: #fff;
-    border: 1px solid rgba(201, 169, 110, 0.18);
+    background: rgba(40, 40, 40, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.18);
     border-radius: 18px;
     margin-bottom: 0.8rem;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
     animation: popIn 0.4s ease both;
     text-align: left;
-    box-shadow: 0 4px 12px rgba(180, 130, 80, 0.04);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.04);
 }
 
 .vertical-card:hover {
     border-color: var(--gold);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(180, 130, 80, 0.1);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.1);
 }
 
 .vertical-card h4 {
@@ -1002,7 +1002,7 @@ body {
 
 .pill-option {
     padding: 0.45rem 1rem;
-    background: #fff;
+    background: rgba(40, 40, 40, 0.95);
     border: 1px solid var(--gold-light);
     border-radius: 50px;
     font-size: 0.8rem;
@@ -1013,7 +1013,7 @@ body {
 
 .pill-option:hover {
     border-color: var(--gold);
-    background: rgba(201, 169, 110, 0.05);
+    background: rgba(212, 175, 55, 0.05);
 }
 
 .pill-option.active {
@@ -1038,8 +1038,8 @@ body {
     height: 100px;
     padding: 1rem;
     border-radius: 18px;
-    border: 1px solid rgba(201, 169, 110, 0.25);
-    background: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    background: rgba(40, 40, 40, 0.95);
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     color: var(--text-dark);
@@ -1076,7 +1076,7 @@ body {
     justify-content: center;
     cursor: pointer;
     transition: transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(180, 120, 60, 0.2);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
 }
 
 .send-btn-circle:hover {
@@ -1094,8 +1094,8 @@ body {
 }
 
 .slider-group {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(201, 169, 110, 0.15);
+    background: rgba(40, 40, 40, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     padding: 1.5rem;
     border-radius: 20px;
     display: flex;
@@ -1134,7 +1134,7 @@ body {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #fff;
+    background: rgba(40, 40, 40, 0.95);
     border: 2px solid var(--rose);
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(212, 160, 160, 0.4);
@@ -1177,9 +1177,9 @@ body {
 }
 
 .user-bubble {
-    background: rgba(201, 169, 110, 0.04);
-    border-top: 1px solid rgba(201, 169, 110, 0.08);
-    border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+    background: rgba(212, 175, 55, 0.04);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
     margin: 0.8rem 0;
 }
 
@@ -1194,7 +1194,7 @@ body {
     justify-content: center;
     font-size: 0.75rem;
     color: #fff;
-    box-shadow: 0 4px 10px rgba(180, 120, 60, 0.2);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
     flex-shrink: 0;
 }
 
@@ -1262,18 +1262,18 @@ body {
 
 .bot-bubble {
     align-self: flex-start;
-    background-color: #f7f3ee; /* Light cream/beige */
-    color: #4a3f35;
+    background-color: var(--bot-bg); /* Dark grey */
+    color: var(--text-dark);
     border-bottom-left-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .user-bubble {
     align-self: flex-end;
-    background-color: #fce4ec; /* Light rose/pink */
-    color: #880e4f;
+    background-color: var(--user-bg); /* Gold tinted */
+    color: var(--text-dark);
     border-bottom-right-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 0.55rem 0.9rem; /* Reduced padding */
 }
 
@@ -1311,7 +1311,7 @@ body {
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.25), transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.25), transparent);
 }
 
 .chat-divider span {
@@ -1328,9 +1328,9 @@ body {
 .chat-input-bar-container {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 250, 245, 0.98);
+    background: rgba(18, 18, 18, 0.98);
     backdrop-filter: blur(15px);
-    border-top: 1px solid rgba(201, 169, 110, 0.12);
+    border-top: 1px solid rgba(212, 175, 55, 0.12);
 }
 
 .chat-input-bar {
@@ -1347,8 +1347,8 @@ body {
     max-height: 100px;
     padding: 0.6rem 1.2rem;
     border-radius: 20px;
-    border: 1.2px solid rgba(201, 169, 110, 0.25);
-    background: #fff;
+    border: 1.2px solid rgba(212, 175, 55, 0.25);
+    background: rgba(30, 30, 30, 0.9);
     font-family: 'Inter', sans-serif;
     font-size: 0.88rem;
     color: var(--text-dark);
@@ -1356,12 +1356,12 @@ body {
     outline: none;
     line-height: 1.4;
     transition: all 0.25s ease;
-    box-shadow: inset 0 1px 3px rgba(100, 60, 30, 0.02);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .chat-inline-textarea:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .chat-send-btn {
@@ -1375,7 +1375,7 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(180, 120, 60, 0.25);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
     transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     flex-shrink: 0;
     font-size: 0.85rem;
@@ -1383,7 +1383,7 @@ body {
 
 .chat-send-btn:hover {
     transform: scale(1.06) translateY(-1px);
-    box-shadow: 0 6px 15px rgba(180, 120, 60, 0.35);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.35);
 }
 
 .footer-attribution {
@@ -1430,11 +1430,11 @@ body {
 
 .product-card {
     flex: 0 0 160px;
-    background: #fff;
+    background: rgba(30, 30, 30, 0.9);
     border-radius: 18px;
     padding: 0.75rem;
-    box-shadow: 0 4px 15px rgba(201, 169, 110, 0.12);
-    border: 1px solid rgba(201, 169, 110, 0.1);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.1);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
@@ -1445,7 +1445,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(201, 169, 110, 0.2);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
     border-color: var(--gold-light);
 }
 
@@ -1503,7 +1503,7 @@ body {
     padding: 1rem 1.2rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
-    box-shadow: 0 4px 12px rgba(180, 130, 80, 0.05);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.05);
 }
 
 .info-box-title {
@@ -1604,7 +1604,7 @@ body {
     background: #f7f1e6;
     color: #5a4a3b;
     border-bottom-left-radius: 6px;
-    box-shadow: 0 2px 8px rgba(100, 60, 30, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .chat-screen.concern-assessment-screen .user-bubble {
@@ -1730,7 +1730,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 50%;
-    border: 2px solid rgba(201, 169, 110, 0.55);
+    border: 2px solid rgba(212, 175, 55, 0.55);
     animation: voiceRingExpand 2.4s ease-out infinite;
 }
 
@@ -1741,7 +1741,7 @@ body {
 
 .voice-pulse-ring--3 {
     animation-delay: 1.6s;
-    border-color: rgba(201, 169, 110, 0.3);
+    border-color: rgba(212, 175, 55, 0.3);
 }
 
 @keyframes voiceRingExpand {
@@ -1763,8 +1763,8 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow:
-        0 0 0 6px rgba(201, 169, 110, 0.2),
-        0 8px 28px rgba(180, 120, 60, 0.55);
+        0 0 0 6px rgba(212, 175, 55, 0.2),
+        0 8px 28px rgba(212, 175, 55, 0.55);
     animation: voiceCoreGlow 1.8s ease-in-out infinite alternate;
 }
 
@@ -1775,8 +1775,8 @@ body {
 }
 
 @keyframes voiceCoreGlow {
-    from { box-shadow: 0 0 0 6px rgba(201,169,110,0.2), 0 8px 28px rgba(180,120,60,0.55); }
-    to   { box-shadow: 0 0 0 12px rgba(201,169,110,0.12), 0 12px 40px rgba(201,169,110,0.65); }
+    from { box-shadow: 0 0 0 6px rgba(212, 175, 55,0.2), 0 8px 28px rgba(212, 175, 55,0.55); }
+    to   { box-shadow: 0 0 0 12px rgba(212, 175, 55,0.12), 0 12px 40px rgba(212, 175, 55,0.65); }
 }
 
 /* ─── Listening Status Label ─────────────────────────────── */
@@ -1805,7 +1805,7 @@ body {
     gap: 0.5rem;
     padding: 0.55rem 1.4rem;
     border: 1.5px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(40, 40, 40, 0.6);
     color: rgba(255, 255, 255, 0.8);
     border-radius: 50px;
     font-family: 'Inter', sans-serif;
@@ -1818,7 +1818,7 @@ body {
 }
 
 .voice-cancel-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(40, 40, 40, 0.6);
     border-color: rgba(255, 255, 255, 0.55);
     color: #fff;
     transform: scale(1.04);
@@ -1831,8 +1831,8 @@ body {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(201, 169, 110, 0.12);
-    border: 1.5px solid rgba(201, 169, 110, 0.35);
+    background: rgba(212, 175, 55, 0.12);
+    border: 1.5px solid rgba(212, 175, 55, 0.35);
     color: var(--gold-dark);
     display: flex;
     align-items: center;
@@ -1841,7 +1841,7 @@ body {
     cursor: pointer;
     flex-shrink: 0;
     transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 2px 8px rgba(180, 120, 60, 0.1);
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
 }
 
 .input-voice-btn:hover {
@@ -1849,7 +1849,7 @@ body {
     border-color: transparent;
     color: #fff;
     transform: scale(1.08);
-    box-shadow: 0 4px 14px rgba(180, 120, 60, 0.3);
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
 }
 
 /* Recording state — red glow */
