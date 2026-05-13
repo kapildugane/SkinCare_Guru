@@ -67,6 +67,7 @@ function closeChat() {
 function updateHeader() {
     const titleEl = document.getElementById('chat-header-title');
     const backBtn = document.getElementById('back-btn');
+    const voiceBtn = document.getElementById('voice-toggle-btn');
 
     // Update Title
     const intent = userData.intent;
@@ -77,6 +78,16 @@ function updateHeader() {
         backBtn.classList.remove('hidden');
     } else {
         backBtn.classList.add('hidden');
+    }
+
+    // Show/Hide Voice Toggle Button (visible once user picks an intent)
+    if (voiceBtn && currentStep > 0) {
+        const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+        if (supported) {
+            voiceBtn.classList.remove('hidden');
+        }
+    } else if (voiceBtn && currentStep === 0) {
+        voiceBtn.classList.add('hidden');
     }
 }
 
@@ -764,6 +775,17 @@ function selectOption(optionText, dataKey, nextStep) {
 
 function restartChat() {
     chatWindow.classList.remove('full-screen-results');
+
+    // Turn off voice mode if active
+    if (VoiceAgent.isOn()) {
+        VoiceAgent.toggleVoiceMode();
+    }
+    TTSAgent.stop();
+
+    // Re-hide voice toggle button
+    const voiceBtn = document.getElementById('voice-toggle-btn');
+    if (voiceBtn) voiceBtn.classList.add('hidden');
+
     userData = {
         session_id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2)
     };
@@ -1411,6 +1433,8 @@ function _checkVoiceCompatibility() {
     if (!btn) return;
 
     if (!supported) {
+        // Keep button hidden entirely if browser doesn't support STT
+        btn.classList.add('hidden');
         btn.style.opacity  = '0.35';
         btn.style.cursor   = 'not-allowed';
         btn.title = 'Voice input requires Chrome or Edge browser';
