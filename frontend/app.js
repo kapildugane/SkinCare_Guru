@@ -252,7 +252,7 @@ function enterChatMode(res) {
     // 2. Footer — add chat input if needed, else just attribution
     const footer = document.querySelector('.chat-footer');
     if (footer) {
-        if (userData.intent === "Hii, how can i help you" || res.type === "input") {
+        if (userData.intent === "Hii, how can i help you") {
             footer.innerHTML = `
                 <div class="input-container chat-mode-input">
                     <textarea class="chat-textarea" id="chat-mode-textarea" placeholder="${res.placeholder || 'Ask a question...'}"></textarea>
