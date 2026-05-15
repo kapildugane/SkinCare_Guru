@@ -80,13 +80,13 @@ function updateHeader() {
         backBtn.classList.add('hidden');
     }
 
-    // Show/Hide Voice Toggle Button (visible once user picks an intent)
-    if (voiceBtn && currentStep > 0) {
+    // Show/Hide Voice Toggle Button (only visible for the Voice Agent intent)
+    if (voiceBtn && currentStep > 0 && userData.intent === "Hii, how can i help you") {
         const supported = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
         if (supported) {
             voiceBtn.classList.remove('hidden');
         }
-    } else if (voiceBtn && currentStep === 0) {
+    } else if (voiceBtn) {
         voiceBtn.classList.add('hidden');
     }
 }
