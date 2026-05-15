@@ -249,14 +249,88 @@ function enterChatMode(res) {
     // Initial Recommendation as first bot bubble
     appendBotMessage(res.message, res.products, msgsArea);
 
-    // 2. Footer — just attribution, no chat input
+    // 2. Footer — add chat input if needed, else just attribution
     const footer = document.querySelector('.chat-footer');
     if (footer) {
-        footer.innerHTML = `
-            <div class="footer-center">
-                <div class="footer-attribution">Powered by GuruAi Labs</div>
-            </div>
-        `;
+        if (userData.intent === "Hii, how can i help you" || res.type === "input") {
+            footer.innerHTML = `
+                <div class="input-container chat-mode-input">
+                    <textarea class="chat-textarea" id="chat-mode-textarea" placeholder="${res.placeholder || 'Ask a question...'}"></textarea>
+                    <div class="input-footer">
+                        <button class="send-btn-circle" id="chat-mode-send-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            const textarea = footer.querySelector('#chat-mode-textarea');
+            const sendBtn = footer.querySelector('#chat-mode-send-btn');
+            
+            const submit = () => {
+                const val = textarea.value.trim();
+                if (val) {
+                    userData.follow_up_chat = val;
+                    appendUserMessage(val);
+                    textarea.value = '';
+                    appendTypingBubble(document.getElementById('chat-messages-area'));
+                    
+                    requestChatApi({ step: 999, data: userData }).then(result => {
+                        removeTypingBubble();
+                        if (result.route_to) {
+                            // If the AI voice assistant decided to route, redirect to that flow
+                            userData.intent = result.route_to;
+                            isChatMode = false;
+                            
+                            // Let the user know before jumping
+                            appendBotMessage(result.message || `Routing you to ${result.route_to}...`);
+                            
+                            setTimeout(() => {
+                                // Restore wizard layout
+                                chatScreen.classList.remove('final-output-page');
+                                chatScreen.innerHTML = `
+                                    <div id="typing-indicator" class="typing-indicator hidden">
+                                        <span></span><span></span><span></span>
+                                    </div>
+                                    <div id="chat-question" class="chat-question"></div>
+                                    <div id="options-container" class="options-container"></div>
+                                `;
+                                footer.innerHTML = `
+                                    <div class="footer-center">
+                                        <div class="footer-attribution">Powered by GuruAi Labs</div>
+                                    </div>
+                                `;
+                                sendToBackend(1, userData);
+                            }, 2500);
+                        } else {
+                            appendBotMessage(result.message, result.products);
+                        }
+                    }).catch(err => {
+                        removeTypingBubble();
+                        appendBotMessage("⚠️ " + (err.message || "Connection error."));
+                    });
+                }
+            };
+            sendBtn.onclick = submit;
+            textarea.onkeydown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } };
+            
+            // Auto-trigger voice mode if backend requests it
+            if (res.voice_mode) {
+                setTimeout(() => {
+                    if (typeof toggleVoiceMode === 'function' && !VoiceAgent.isOn()) {
+                        toggleVoiceMode();
+                    }
+                }, 800);
+            }
+            
+            // Auto-focus input
+            setTimeout(() => textarea.focus(), 400);
+        } else {
+            footer.innerHTML = `
+                <div class="footer-center">
+                    <div class="footer-attribution">Powered by GuruAi Labs</div>
+                </div>
+            `;
+        }
     }
 }
 
@@ -807,6 +881,14 @@ function restartChat() {
             <div id="chat-question" class="chat-question"></div>
             <div id="options-container" class="options-container"></div>
         `;
+        const footer = document.querySelector('.chat-footer');
+        if (footer) {
+            footer.innerHTML = `
+                <div class="footer-center">
+                    <div class="footer-attribution">Powered by GuruAi Labs</div>
+                </div>
+            `;
+        }
         chatScreen.style.opacity = '1';
         sendToBackend(0, userData);
     }, 300);

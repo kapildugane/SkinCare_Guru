@@ -354,21 +354,164 @@ def handle_kit_flow(step, user_data, db):
 
 
 
+VOICE_ASSISTANT_SYSTEM_PROMPT = """
+You are the AI Voice Assistant for a skincare platform called SkinCare Guru.
+
+Your role is to act as a smart conversational layer for the existing skincare system.
+
+IMPORTANT:
+- Do NOT change or replace the logic of existing skincare flows.
+- The platform already has 3 working modules/cards:
+  1. Build My Routine
+  2. Help Me Fix a Concern
+  3. Create My Custom Kit
+- Your responsibility is ONLY to:
+  - Understand what the user wants
+  - Explain the feature naturally
+  - Ask a few helpful questions
+  - Route the user to the correct existing flow/module
+  - Continue conversational support while respecting the existing logic
+
+SYSTEM BEHAVIOR:
+If the user talks about skincare goals, routine building, skin concerns, or personalized kits, identify which of the 3 modules best matches the request.
+
+MODULE 1: BUILD MY ROUTINE
+Trigger when users say things like: "Build my skincare routine", "I need a daily routine", "Morning and night skincare", "Routine for oily skin", "What products should I use daily?", "Beginner skincare routine"
+Your role: Collect basic information conversationally, then guide the user into the existing system.
+Questions you may ask: What's your skin type? What's your biggest skincare goal? Are you currently using any skincare products?
+After collecting enough information: "I'm now preparing your personalized routine recommendations."
+
+MODULE 2: HELP ME FIX A CONCERN
+Trigger when users mention: Acne, Pimples, Pigmentation, Dark spots, Redness, Dry skin, Sensitive skin, Wrinkles, Hair fall, Dull skin, Uneven texture, Large pores, Blackheads
+Your role: Understand the concern, ask clarifying questions, route into the existing system.
+Questions you may ask: How long have you had this concern? Is your skin sensitive? Have you tried any treatments before?
+IMPORTANT: Never diagnose diseases, never claim medical cures, never replace a dermatologist. Severe issues should be escalated professionally.
+
+MODULE 3: CREATE MY CUSTOM KIT
+Trigger when users say: "Create my kit", "Custom skincare kit", "Personalized products", "Bundle products for me", "Recommend products for my skin", "Build my skincare set"
+Your role: Understand preferences, gather skin profile information, route into the existing system.
+Questions you may ask: What's your skin type? What are your top concerns? Do you prefer simple or advanced routines? Any ingredient sensitivities?
+
+GENERAL CONVERSATION RULES:
+- Speak naturally and conversationally
+- Keep replies short and voice-friendly (under 80 words)
+- Ask one question at a time
+- Sound warm, modern, and supportive
+- Avoid robotic responses
+- Never overwhelm users with long explanations
+- Focus on guidance and routing
+
+VOICE ASSISTANT FALLBACK BEHAVIOR:
+If the user is unclear, say something like:
+"Sure — are you looking to: 1. Build a skincare routine, 2. Fix a skin concern, or 3. Create a personalized skincare kit?"
+
+If the user asks unrelated questions, politely redirect toward skincare assistance.
+
+ROUTING RESPONSE FORMAT:
+When you have gathered enough information and are ready to route the user to a module, you MUST include one of these exact tags at the END of your response (on its own line):
+[ROUTE:ROUTINE] — to route to Build My Routine
+[ROUTE:CONCERN] — to route to Help Me Fix a Concern
+[ROUTE:KIT] — to route to Create My Custom Kit
+
+Only include a routing tag when you have collected sufficient information. Do NOT route on the first message.
+
+SAFETY RULES:
+Never diagnose medical conditions, prescribe medications, promise guaranteed results, or suggest unsafe treatments.
+For severe symptoms: "That sounds like something a dermatologist should evaluate professionally."
+
+PERSONALITY:
+Tone: Friendly, premium skincare advisor, calm and confident, helpful and modern.
+The assistant should feel like a smart skincare concierge, a premium beauty consultant, a helpful voice guide inside the app.
+""".strip()
+
+
+def handle_voice_assistant_chat(step, user_data, db):
+    """Dedicated handler for the voice assistant conversational flow."""
+    user_query = user_data.get("follow_up_chat", "Hello")
+
+    # Build conversation history context from previous messages
+    session_id = user_data.get("session_id")
+    conversation_context = ""
+    if session_id:
+        try:
+            recent_messages = (
+                db.query(ChatMessage)
+                .filter(ChatMessage.session_id == session_id)
+                .order_by(ChatMessage.id.desc())
+                .limit(10)
+                .all()
+            )
+            if recent_messages:
+                recent_messages.reverse()
+                history_lines = []
+                for msg in recent_messages:
+                    role = "User" if msg.sender == "user" else "Assistant"
+                    history_lines.append(f"{role}: {msg.message}")
+                conversation_context = "\n".join(history_lines[-10:])
+        except Exception as e:
+            logger.warning(f"[VoiceChat] Could not load history: {e}")
+
+    prompt_parts = []
+    if conversation_context:
+        prompt_parts.append(f"--- CONVERSATION HISTORY ---\n{conversation_context}\n")
+    prompt_parts.append(f"--- USER'S LATEST MESSAGE ---\n\"{user_query}\"\n")
+    prompt_parts.append("Respond naturally and concisely. Remember to keep it voice-friendly (short sentences, under 80 words).")
+
+    prompt = "\n".join(prompt_parts)
+
+    ai_text = ask_llm_safe(prompt, system_prompt=VOICE_ASSISTANT_SYSTEM_PROMPT, json_mode=False, temperature=0.7)
+
+    if not ai_text:
+        ai_text = (
+            "I'm having a little trouble connecting right now. "
+            "You can tell me about your skin concerns, ask for a routine, "
+            "or I can help create a personalized kit for you!"
+        )
+
+    # Check if the AI wants to route to a specific module
+    route_action = None
+    clean_text = ai_text
+    if "[ROUTE:ROUTINE]" in ai_text:
+        route_action = "Build my Routine"
+        clean_text = ai_text.replace("[ROUTE:ROUTINE]", "").strip()
+    elif "[ROUTE:CONCERN]" in ai_text:
+        route_action = "Help Me Fix a Concern"
+        clean_text = ai_text.replace("[ROUTE:CONCERN]", "").strip()
+    elif "[ROUTE:KIT]" in ai_text:
+        route_action = "Create My Custom Kit"
+        clean_text = ai_text.replace("[ROUTE:KIT]", "").strip()
+
+    response = {
+        "type": "input",
+        "message": clean_text,
+        "placeholder": "Speak or type your question...",
+        "next_step": 999,
+        "data_key": "follow_up_chat"
+    }
+
+    # If routing was detected, include it so the frontend can act on it
+    if route_action:
+        response["route_to"] = route_action
+
+    return response
+
+
 def handle_conversational_flow(step, user_data, db):
     if step == 1:
         return {
             "type": "input",
-            "message": "Hii! I'm your Skincare Guru. How can I help you today? You can tell me about your skin concerns, ask for routine advice, or just say hello!",
+            "message": "Hey there! 👋 I'm your Skincare Guru voice assistant. You can talk to me about anything skincare related! Whether you want to build a routine, fix a skin concern, or create a personalized kit — just tell me what's on your mind.",
             "placeholder": "Speak or type your question...",
             "next_step": 999,
-            "data_key": "follow_up_chat"
+            "data_key": "follow_up_chat",
+            "voice_mode": True
         }
-    return handle_follow_up_chat(step, user_data, db)
+    return handle_voice_assistant_chat(step, user_data, db)
 
 
 # ---------------- AI + RAG ---------------- #
 
-def ask_llm(prompt, system_prompt=None):
+def ask_llm(prompt, system_prompt=None, json_mode=True, temperature=0):
     load_dotenv(os.path.join(BASE_DIR, ".env"), override=True)
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     
@@ -386,12 +529,12 @@ def ask_llm(prompt, system_prompt=None):
     messages.append({"role": "user", "content": prompt})
     payload = {
         "model": "gpt-4o-mini",
-        "temperature": 0,
-        "response_format": {"type": "json_object"} if system_prompt else None,
+        "temperature": temperature,
         "messages": messages
     }
-    if payload["response_format"] is None:
-        payload.pop("response_format")
+    # Only force JSON output when json_mode is True AND there's a system prompt
+    if system_prompt and json_mode:
+        payload["response_format"] = {"type": "json_object"}
     try:
         res = requests.post(openai_url, headers=headers, json=payload)
         res.raise_for_status()
@@ -400,8 +543,8 @@ def ask_llm(prompt, system_prompt=None):
         print(f"OpenAI Error: {e}")
         return "⚠️ The AI service is currently unavailable. Please check your API key and credits."
 
-def ask_llm_safe(prompt, system_prompt=None):
-    result = ask_llm(prompt, system_prompt=system_prompt)
+def ask_llm_safe(prompt, system_prompt=None, json_mode=True, temperature=0):
+    result = ask_llm(prompt, system_prompt=system_prompt, json_mode=json_mode, temperature=temperature)
     if not result or not result.strip():
         return None
 

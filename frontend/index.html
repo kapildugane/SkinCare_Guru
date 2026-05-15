@@ -127,24 +127,24 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Voice Status Overlay — shown when Guru is listening -->
-    <div id="voice-overlay" class="voice-overlay hidden" aria-live="polite" aria-label="Voice listening status">
-        <div class="voice-overlay-inner">
-            <!-- Animated pulse rings -->
-            <div class="voice-pulse-ring voice-pulse-ring--1"></div>
-            <div class="voice-pulse-ring voice-pulse-ring--2"></div>
-            <div class="voice-pulse-ring voice-pulse-ring--3"></div>
-            <!-- Mic Icon at center -->
-            <div class="voice-pulse-core">
-                <i class="fa-solid fa-microphone" id="voice-core-icon"></i>
+        <!-- Voice Status Overlay — shown when Guru is listening -->
+        <div id="voice-overlay" class="voice-overlay hidden" aria-live="polite" aria-label="Voice listening status">
+            <div class="voice-overlay-inner">
+                <!-- Animated pulse rings -->
+                <div class="voice-pulse-ring voice-pulse-ring--1"></div>
+                <div class="voice-pulse-ring voice-pulse-ring--2"></div>
+                <div class="voice-pulse-ring voice-pulse-ring--3"></div>
+                <!-- Mic Icon at center -->
+                <div class="voice-pulse-core">
+                    <i class="fa-solid fa-microphone" id="voice-core-icon"></i>
+                </div>
             </div>
+            <p class="voice-status-label" id="voice-status-label">Listening...</p>
+            <button class="voice-cancel-btn" id="voice-cancel-btn" onclick="cancelVoice()">
+                <i class="fa-solid fa-xmark"></i> Cancel
+            </button>
         </div>
-        <p class="voice-status-label" id="voice-status-label">Listening...</p>
-        <button class="voice-cancel-btn" id="voice-cancel-btn" onclick="cancelVoice()">
-            <i class="fa-solid fa-xmark"></i> Cancel
-        </button>
+
     </div>
 
     <script src="app.js"></script>
